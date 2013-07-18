@@ -1,0 +1,28 @@
+<section class="container">
+
+  <div class="sidebar_user">
+    <h1>Your Event</h1>
+    <%= button_to "Delete Event", @event, :method => :delete, :confirm => 'Are you sure?' %>
+
+  </div>
+
+  <div class="access_user">
+    <h2>Your Confirmation</h2>
+    <div class="confirm_img"><img src="<%= @event.image %>" /></div><br>
+    <div>Created by: <%= @event.creator.name %></div><br>
+    <div>Location: <%= @event.location %></div><br>
+    <div>Address: <%= @event.address %></div><br>
+    <div>Date: <%= @event.date %></div><br>
+    <div>Time: <%= @event.time.strftime("%I:%M %P") %></div><br>
+    <div>Duration: <%= @event.duration %>mins</div><br>
+    <div>Topic: <%= @event.topic %></div><br>
+    <span class="acceptance"><% if @event.acceptor_id == nil %>
+        <%= "Your event is waiting to be accepted" %>
+        <% else %>
+        <%= "Accepted by " + @event.acceptor.name %>
+        <% end %>
+    </span>
+
+  </div>
+
+</section>

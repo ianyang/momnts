@@ -1,0 +1,60 @@
+<section class="container">
+
+<div class="sidebar_user">
+
+  <h1>Welcome Back</h1>
+
+    <%= button_to "View Events", '/display', :method => :get %> <br>
+
+    <%= button_to "Sign Out", destroy_user_session_path, :method => :delete %> <br>
+
+    <%= button_to "Cancel Account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+
+</div>
+
+
+<div class="access_user">
+
+  <h2>Update your information</h2>
+
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div><%= f.label :name %><br />
+    <%= f.text_field :name, :autofocus => true %></div>
+
+    <div><%= f.label :gender %><br />
+    <%= f.select :gender, ['Male','Female'] %></div>
+
+    <div><%= f.label :dob, 'Date of Birth' %><br />
+    <%= f.date_select :dob, :start_year => Date.current.year-15, :end_year => 1920, :order => [:month, :day, :year] %></div>
+
+    <div><%= f.label :profession %><br />
+    <%= f.select :profession, ['Tech','Media','Finance'] %></div>
+
+    <div><%= f.label :number, 'Phone' %><br />
+    <%= f.text_field :number %></div>
+
+    <div><%= f.label :email %><br />
+    <%= f.email_field :email, :autofocus => true %></div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div><%= f.label :password %> <i>(leave blank to keep current one)</i><br />
+    <%= f.password_field :password, :autocomplete => "off" %></div>
+
+    <div><%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %></div>
+
+    <div><%= f.label :current_password %> <i>(to confirm your changes)</i><br />
+    <%= f.password_field :current_password %></div>
+
+    <div><%= f.submit "Update" %></div>
+  <% end %>
+
+
+</div>
+
+</section>

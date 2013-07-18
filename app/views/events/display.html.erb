@@ -1,0 +1,22 @@
+<section class="container">
+
+  <div class="sidebar_user">
+    <h1>Your Events</h1>
+
+  </div>
+
+  <div class="access_user">
+
+    <h2>Events you have proposed</h2><hr>
+    <% @created.each do |event| %>
+    <div><a target='_blank' href='/events/<%=event.id%>'><%= event.location %> for <%= event.date %></a></div></br>
+    <% end %>
+
+    <h2>Events you have accepted</h2><hr>
+    <% @attending.each do |event| %>
+    <div><a target='_blank' href='/events/<%=event.id%>'><%= event.location %> for <%= event.date %></a></div></br>
+    <% end %>
+
+  </div>
+
+</section>

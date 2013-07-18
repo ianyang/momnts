@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Momnts - Quick meets over a meal</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" />
+  <!--[if lte IE 8]>
+      <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.ie.css" />
+  <![endif]-->
+  <script src="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.js"></script>
+  <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhecwIsLs-DjQRKgeO5ycziDhAswc7ofo&sensor=true">
+  </script>
+
+  <!-- fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+  <div id="beta">Beta</div>
+  <header>
+  	<div class="menu">
+      <a href="/"><h1><span class="logo">!</span>momnts</h1></a>
+  	  <a href='/attend'><button>Attend</button></a>
+  	  <a href='/propose'><button>Propose</button></a>
+  	  <a href='/users/edit'><button>
+          <% if user_signed_in? %>
+            <%= 'Account' %>
+          <% else %>
+            <%= 'Sign In' %>
+          <% end %>
+      </button></a>
+  	</div>
+
+  </header>
+
+  <div class="alerts">
+    <%flash.each do|key,value|%>
+      <div class="alert alert-<%=key%>"> <%=value%> </div>
+    <%end%>
+  </div>
+
+  <%= yield %>
+
+  <footer>
+  	<p>Designed by <b>Ian Yang</b></p>
+  	<a href="http://www.twitter.com/ianyyang"><img class="twitter" src="http://storm-project.net/images/logos/twitter.png" /></a>
+    <a href="mailto:ian@ianyang.co"><img class="mail" src="assets/mail.png" /></a>
+  </footer>
+</body>
+</html>

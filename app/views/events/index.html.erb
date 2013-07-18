@@ -1,0 +1,106 @@
+<section class="container">
+
+  <div class="events_search">
+
+    <h1>Search for an event</h1>
+    <%= form_tag events_path, :method => 'get' do %>
+    <p>
+      On <%= date_select :date, params[:date]%> I have <%= select_tag :duration,
+        options_for_select([15,30,45,60,75,90]) %> mins
+      <%= submit_tag "Search" %>
+    <% end %>
+    </p>
+
+  </div>
+
+	<div id="map"></div>
+
+	<div class="show_events">
+    <h1>Matching Events</h1>
+    <span class="re_search"><a href='/attend'><button>Search Again</button></a></span>
+
+    <div class="events_search_results">
+  		<% @events.each do |event|%>
+  		  <div class="event">
+          <img src="<%= event.image%>" />
+          <div><h4><%= event.location %></h4></div>
+          <div><%= event.time.strftime("%I:%M %P") %> for <%= event.duration %>mins</div>
+          <div>"<%= event.topic %>"</div>
+          <div class="hidden">
+            <div class="lat"><%= event.latitude %></div>
+            <div class="long"><%= event.longitude %></div>
+            <div class="tol"><%= event.topic %></div>
+            <div class="eventid"><%= event.id %></div>
+          </div>
+        </div>
+  		<% end %>
+    </div>
+  </div>
+
+	<div class="show_attend">
+    <h1>Accept Event</h1>
+    <%= form_for @event, :url => 'events/12', method: 'put' do |f| %>
+      <div class="unhidden">
+      </div>
+      <%= f.label :acceptor_identifier, "How to identify you?" %>
+      <%= f.text_field :acceptor_identifier %></br>
+      <%= f.hidden_field :acceptor_id, :value => current_user.id %></br>
+      <%= f.submit %>
+    <% end %>
+  </div>
+
+</section>
+
+
+<script>
+
+$(function() {
+"use strict";
+
+  $(function(map) {
+
+    var map = L.map('map').setView([37.7750, -122.4183], 13);
+
+    L.tileLayer('http://{s}.tile.cloudmade.com/a88229bf8d864c4eab186d0cfa1f5349/997/256/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+        maxZoom: 18
+    }).addTo(map);
+
+    for (var i = 0; i < $(".hidden").length; i++) {
+      var data_first = $(".hidden")[i];
+      var lat = $($('.hidden .lat')[i]).text();
+      var lon = $($('.hidden .long')[i]).text();
+      var top = $($('.hidden .tol')[i]).text();
+
+      var geolocate = new Array();
+      geolocate[0] = parseFloat(lat);
+      geolocate[1] = parseFloat(lon);
+
+      L.marker(geolocate).addTo(map)
+      .bindPopup(top)
+      .openPopup();
+    }
+
+  });
+
+  function choose(event) {
+      event.preventDefault();
+
+      var $this = $(this);
+      $('.show_events').empty();
+      $('.show_events').append('<h2>You have chosen<h2>');
+      $('.show_events').append($this);
+      $('.show_events').append("<span class='re_search'><a href='/attend'><button>Search Again</button></a></span>");
+
+      $($this).css('border','5px solid rgba(22,160,133,1)');
+
+      var id = "events/"+$($('.show_events .hidden .eventid')).text();
+      $('.show_attend form').attr("action", id);
+
+  }
+
+  $('body').on('click', '.event', choose);
+
+});
+
+</script>
