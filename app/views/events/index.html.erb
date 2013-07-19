@@ -77,7 +77,7 @@ $(function() {
     }).addTo(map);
 
     for (var i = 0; i < $(".hidden").length; i++) {
-      var data_first = $(".hidden")[i];
+
       var lat = $($('.hidden .lat')[i]).text();
       var lon = $($('.hidden .long')[i]).text();
       var top = $($('.hidden .tol')[i]).text();
@@ -89,7 +89,9 @@ $(function() {
       L.marker(geolocate).addTo(map)
       .bindPopup(top)
       .openPopup();
-    }
+
+    };
+
 
   });
 
