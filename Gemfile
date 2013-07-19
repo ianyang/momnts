@@ -9,6 +9,11 @@ group :development do
   gem 'sqlite3'
 end
 
+# group :test, :development do
+#   gem 'rspect-rails', '~2.0'
+# end
+# Error in bundler. Cannot continue
+
 group :production do
   gem 'pg'
 end

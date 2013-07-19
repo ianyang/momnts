@@ -8,6 +8,9 @@ module EventsHelper
     end
   end
 
+  def locate(city)
+    Geocoder.search(city)
+  end
 
 
 

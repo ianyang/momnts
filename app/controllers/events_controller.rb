@@ -37,6 +37,10 @@ class EventsController < ApplicationController
 
     @event = Event.new(params[:event])
 
+    @city = city_checker
+    @userlat = locate(@city)[0].latitude
+    @userlon = locate(@city)[0].longitude
+
   end
 
   def display

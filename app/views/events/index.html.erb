@@ -1,8 +1,12 @@
 <section class="container">
-
   <div class="events_search">
 
-    <h1>Search for an event</h1>
+    <h1>Events near you in <%= @city %></h1>
+    <div class="hidden">
+      <div class="userlon"><%= @userlon %></div>
+      <div class="userlat"><%= @userlat %></div>
+    </div>
+
     <%= form_tag events_path, :method => 'get' do %>
     <p>
       On <%= date_select :date, params[:date]%> I have <%= select_tag :duration,
@@ -59,7 +63,13 @@ $(function() {
 
   $(function(map) {
 
-    var map = L.map('map').setView([37.7750, -122.4183], 13);
+    var lat = $('.hidden .userlat').text();
+    var lon = $('.hidden .userlon').text();
+    var currentlocate = new Array();
+    currentlocate[0] = parseFloat(lat);
+    currentlocate[1] = parseFloat(lon);
+
+    var map = L.map('map').setView(currentlocate, 13);
 
     L.tileLayer('http://{s}.tile.cloudmade.com/a88229bf8d864c4eab186d0cfa1f5349/997/256/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
