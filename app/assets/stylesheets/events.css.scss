@@ -56,6 +56,7 @@
 
 .event:hover {
   border-right: 5px solid rgba(22,160,133,1);
+  margin-right: -5px;
 }
 
 input[type=button]{
@@ -63,13 +64,14 @@ input[type=button]{
 }
 
 .sidebar_events {
-  margin-left: 35px;
+  margin-left: 15px;
   margin-top: 50px;
   width: 60% px;
   display: inline;
   float: left;
   height: 980px;
   overflow: scroll;
+  padding-right: 25px;
 }
 
 .location_search_container {
@@ -79,7 +81,7 @@ input[type=button]{
 
 .access_events {
   margin-top: 50px;
-  width: 40%%;
+  width: 40%;
   display: inline;
   float: right;
   padding-left: 100px;
