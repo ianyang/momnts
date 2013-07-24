@@ -18,6 +18,7 @@ group :production do
   gem 'pg'
 end
 
+gem 'foreman'
 gem 'oauth'
 gem 'geocoder'
 gem 'devise'

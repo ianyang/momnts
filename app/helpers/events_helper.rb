@@ -12,11 +12,10 @@ module EventsHelper
     Geocoder.search(city)
   end
 
-
-
-
-
-
-
+  def delete_events
+    Event.pastevents.each do |x|
+      x.delete
+    end
+  end
 
 end

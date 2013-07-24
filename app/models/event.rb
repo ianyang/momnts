@@ -34,4 +34,8 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def self.pastevents
+    self.find_by_sql ["SELECT * FROM events WHERE date < ? ", Time.now.to_date]
+  end
+
 end

@@ -33,6 +33,8 @@ class EventsController < ApplicationController
 
     @currentid = current_user.id
 
+    delete_events
+
     @events = Event.search(@duration, @setdate, @currentid)
 
     @event = Event.new(params[:event])
@@ -61,8 +63,8 @@ class EventsController < ApplicationController
     @place = params[:place]
 
     api_host = 'api.yelp.com'
-    consumer = OAuth::Consumer.new(ENV["YELP_CONSUMER_KEY"], ENV["YELP_CONSUMER_SECRET"], {:site => "http://#{api_host}"})
-    access_token = OAuth::AccessToken.new(consumer, ENV["YELP_TOKEN"], ENV["YELP_TOKEN_SECRET"])
+    consumer = OAuth::Consumer.new(YELP_CONSUMER_KEY, YELP_CONSUMER_SECRET, {:site => "http://#{api_host}"})
+    access_token = OAuth::AccessToken.new(consumer, YELP_TOKEN, YELP_TOKEN_SECRET)
     path = "/v2/search?term=#{URI.escape(@find)}&location=#{URI.escape(@place)}"
     @raw = access_token.get(path).body
     @results = JSON.load(@raw)["businesses"]
