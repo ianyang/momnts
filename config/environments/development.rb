@@ -36,4 +36,12 @@ Project::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # where i put my api keys
+
+  ENV["YELP_CONSUMER_KEY"] = '_RQOKbYP2zws0jkBK4rp_w'
+  ENV["YELP_CONSUMER_SECRET"] = 'jH4gh4svxyqw3p7DMZqCdBJCv3Y'
+  ENV["YELP_TOKEN"] = 'p8TCLcjX4cPJY1F9wy9KVx60RQASxngU'
+  ENV["YELP_TOKEN_SECRET"] = 'SUHLkl-XQvUX_XM-NP-QPTtmcMA'
+
 end

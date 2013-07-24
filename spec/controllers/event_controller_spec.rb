@@ -2,16 +2,13 @@ require 'spec_helper'
 
 describe EventsController do
 
-  before :each do
-    @event = Event.create(location: "fake location")
-  end
+  # let(:event) {Event.create()}
 
   describe 'GET index' do
 
     it 'assigns @events' do
-      events = Event.create(location: 'fake event')
       get :index
-      expect(assigns(:events)).to eq([event])
+      expect(assigns(:events)).to eq([])
     end
 
     it "renders the index template" do

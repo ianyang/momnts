@@ -9,15 +9,14 @@ group :development do
   gem 'sqlite3'
 end
 
-# group :test, :development do
-#   gem 'rspect-rails', '~2.0'
-# end
-# Error in bundler. Cannot continue
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+end
 
 group :production do
   gem 'pg'
 end
-
 
 gem 'oauth'
 gem 'geocoder'

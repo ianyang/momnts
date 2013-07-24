@@ -45,9 +45,8 @@ class EventsController < ApplicationController
 
   def display
 
-    @currentid = current_user.id
-    @created = Event.searchcreated(@currentid)
-    @attending = Event.searchattending(@currentid)
+    @created = Event.searchcreated(current_user.id)
+    @attending = Event.searchattending(current_user.id)
 
   end
 
@@ -61,14 +60,9 @@ class EventsController < ApplicationController
     @find = params[:find]
     @place = params[:place]
 
-    consumer_key = '_RQOKbYP2zws0jkBK4rp_w'
-    consumer_secret = 'jH4gh4svxyqw3p7DMZqCdBJCv3Y'
-    token = 'p8TCLcjX4cPJY1F9wy9KVx60RQASxngU'
-    token_secret = 'SUHLkl-XQvUX_XM-NP-QPTtmcMA'
     api_host = 'api.yelp.com'
-    consumer = OAuth::Consumer.new(consumer_key, consumer_secret, {:site => "http://#{api_host}"})
-    access_token = OAuth::AccessToken.new(consumer, token, token_secret)
-
+    consumer = OAuth::Consumer.new(ENV["YELP_CONSUMER_KEY"], ENV["YELP_CONSUMER_SECRET"], {:site => "http://#{api_host}"})
+    access_token = OAuth::AccessToken.new(consumer, ENV["YELP_TOKEN"], ENV["YELP_TOKEN_SECRET"])
     path = "/v2/search?term=#{URI.escape(@find)}&location=#{URI.escape(@place)}"
     @raw = access_token.get(path).body
     @results = JSON.load(@raw)["businesses"]
