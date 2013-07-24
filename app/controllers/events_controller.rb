@@ -78,9 +78,8 @@ class EventsController < ApplicationController
     @event.save
 
     #Twilio
-    account_sid = 'AC5eadc2f446566e4dea21fb6190cf6176'
-    auth_token = '8249d2fd3ac1cb91790345af8340ebeb'
-    @client = Twilio::REST::Client.new account_sid, auth_token
+
+    @client = Twilio::REST::Client.new TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN
 
     message = @client.account.sms.messages.create(:body => "One event added online by #{@event.creator.name}. Just to let you know.",
         :to => "+14156466565",     # Replace with your phone number
