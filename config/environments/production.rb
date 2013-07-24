@@ -64,4 +64,13 @@ Project::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  # where i put my api keys
+
+  ENV["YELP_CONSUMER_KEY"] = '_RQOKbYP2zws0jkBK4rp_w'
+  ENV["YELP_CONSUMER_SECRET"] = 'jH4gh4svxyqw3p7DMZqCdBJCv3Y'
+  ENV["YELP_TOKEN"] = 'p8TCLcjX4cPJY1F9wy9KVx60RQASxngU'
+  ENV["YELP_TOKEN_SECRET"] = 'SUHLkl-XQvUX_XM-NP-QPTtmcMA'
+
+
 end
