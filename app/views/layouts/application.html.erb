@@ -11,14 +11,15 @@
   <![endif]-->
   <script src="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.js"></script>
   <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhecwIsLs-DjQRKgeO5ycziDhAswc7ofo&sensor=true">
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhecwIsLs-DjQRKgeO5ycziDhAswc7ofo&&libraries=places&sensor=true">
+  </script>
   </script>
 
   <!-- fonts -->
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <div id="beta">Beta</div>
+  <div id="beta"><p>Beta</p></div>
 
   <header>
       <a href="/"><span class="logo">!</span><h1>momnts</h1></a>
@@ -45,10 +46,10 @@
 
   <%= yield %>
 
-  <footer>
+<!--   <footer>
   	<p>Designed by <b>Ian Yang</b></p>
   	<a href="http://www.twitter.com/ianyyang"><img class="twitter" src="http://storm-project.net/images/logos/twitter.png" /></a>
     <a href="mailto:ian@ianyang.co"><img class="mail" src="assets/mail.png" /></a>
-  </footer>
+  </footer> -->
 </body>
 </html>

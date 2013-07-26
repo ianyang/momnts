@@ -1,0 +1,24 @@
+.sidebar_user {
+  margin-left: 35px;
+
+  margin-top: 50px;
+  width: 279px;
+  height: 300px;
+  display: inline;
+  float: left;
+}
+
+.access_user {
+  border-left: 1px dotted rgba(200,200,200,1);
+  margin-top: 50px;
+  padding-left: 100px;
+  padding-top: 20px;
+  width: 50%;
+  display: inline;
+  float: right;
+}
+
+.access_user a:hover {
+  border-left: 5px solid rgba(22,160,133,1);
+  margin-left: -5px;
+}
