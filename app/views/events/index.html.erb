@@ -1,44 +1,48 @@
-<div id="map"></div>
+<div id="container">
 
-<div id="events-sidebar">
+  <div id="map"></div>
 
-  <div class="events_search">
+  <div id="events-sidebar">
 
-    <nav>Search for Events</nav>
+    <div class="events_search">
+      <nav>Search for Events</nav>
 
-    <%= form_tag events_path, :method => 'get' do %>
-      <%= date_select :date, params[:date]%> for <%= select_tag :duration,
-        options_for_select([15,30,45,60,75,90]) %> mins
-      <%= submit_tag "Search" %>
-    <% end %>
-
-  </div>
-  <div class="events_search_results">
-		<% @events.each do |event|%>
-		  <div class="event">
-        <img src="<%= event.image%>" />
-        <div><h4><%= event.location %></h4></div>
-        <div><%= event.time.strftime("%I:%M %P") %> for <%= event.duration %>mins</div>
-        <div>"<%= event.topic %>"</div>
-        <div class="hidden">
-          <div class="lat"><%= event.latitude %></div>
-          <div class="long"><%= event.longitude %></div>
-          <div class="tol"><%= event.topic %></div>
-          <div class="eventid"><%= event.id %></div>
-        </div>
+      <div class="events_search_forms">
+        <%= form_tag events_path, :method => 'get' do %>
+          <%= date_select :date, params[:date]%> for <%= select_tag :duration,
+            options_for_select([15,30,45,60,75,90]) %> mins
+          <%= submit_tag "Search" %>
+        <% end %>
       </div>
-		<% end %>
-  </div>
 
-  <nav>Identify Yourself</nav>
+      <div class="events_search_results">
+        <% @events.each do |event|%>
+          <div class="event">
+            <img src="<%= event.image%>" />
+            <div><h4><%= event.location %></h4></div>
+            <div><%= event.time.strftime("%I:%M %P") %> for <%= event.duration %>mins</div>
+            <div>"<%= event.topic %>"</div>
+            <div class="hidden">
+              <div class="lat"><%= event.latitude %></div>
+              <div class="long"><%= event.longitude %></div>
+              <div class="tol"><%= event.topic %></div>
+              <div class="eventid"><%= event.id %></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
-  <div class="show_attend">
-    <%= form_for @event, :url => 'events/12', method: 'put' do |f| %>
-      <div class="unhidden"></div>
-      <%= f.text_field :acceptor_identifier %></br>
-      <%= f.hidden_field :acceptor_id, :value => current_user.id %></br>
-      <%= f.submit "Confirm"%>
-    <% end %>
+    <div class="show_attend">
+      <nav>Identify Yourself</nav>
+      <%= form_for @event, :url => 'events/12', method: 'put' do |f| %>
+        <div class="unhidden"></div>
+        <%= f.text_field :acceptor_identifier %></br>
+        <%= f.hidden_field :acceptor_id, :value => current_user.id %></br>
+        <%= f.submit "Confirm"%>
+      <% end %>
+    </div>
+
   </div>
 
 </div>

@@ -1,15 +1,14 @@
 <%= form_for @event do |f| %>
 
   <div class="when">
-    <h2>When</h2><br>
 
-    <div><%= f.label :date %></br>
+    <div><%= f.label :date %>
     <%= f.date_select :date, :start_year => Date.current.year, :end_year => 2014, :order => [:month, :day, :year] %></div>
 
-    <div><%= f.label :time %></br>
+    <div><%= f.label :time %>
     <%= f.time_select :time, {minute_step: 15, ampm: true} %></div>
 
-    <div><%= f.label :duration %></br>
+    <div><%= f.label :duration %>
     <%= f.select :duration, [15,30,45,60,75,90,"Get a life!"] %>mins</div>
 
   </div>
@@ -25,20 +24,12 @@
 
   </div>
 
-  <div class="where">
-    <h2>Where</h2>
-    <p>Magic. We know where you are going.</p></br>
-
-    <div><%= f.label :location %></br>
+    <div class="hidden"><%= f.label :location %>
     <%= f.text_field :location, :readonly => true %></div>
-
-    <div><%= f.label :address %></br>
+    <div class="hidden"><%= f.label :address %>
     <%= f.text_field :address, :readonly => true %></div>
-
-    <div class="hidden"><%= f.label :image %></br>
+    <div class="hidden"><%= f.label :image %>
     <%= f.text_field :image, :readonly => true %></div>
-
-  </div>
 
   <%= f.submit %>
 <% end %>

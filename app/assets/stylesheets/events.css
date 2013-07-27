@@ -1,17 +1,27 @@
+#container {
+  border: none;
+  width: 100%;
+  height: calc(100% - 80px);
+}
+
 #map {
-	width: 100%;
-	height: calc(100% - 80px);
-  position: absolute;
-  float: left;
+ height: 100%;
+ width: 100%;
+ float: left;
 }
 
 #events-sidebar {
-  margin-left: 70%;
   width: 30%;
   height: calc(100% - 80px);
-  overflow: scroll;
   position: absolute;
-  background: rgba(250,250,250,0.4);
+  background: rgba(250,250,250,0.2);
+  min-width: 340px;
+  right: 0;
+  /*-webkit-filter: blur(20px);
+  -moz-filter: blur(15px);
+  -o-filter: blur(15px);
+  -ms-filter: blur(15px);
+  filter: blur(15px);*/
 }
 
 #events-sidebar nav{
@@ -23,48 +33,29 @@
   line-height: 35px;
   color: white;
   font-weight: 300;
-  font-size: 20px;
+  font-size: 18px;
+}
+
+.events_search {
+  width: 96%;
+  height: 70%;
+  margin: 10px 2% 0 2%;
+  background: rgba(250,250,250,0.7);
+  overflow: scroll;
+}
+
+.events_search_forms {
+  width: 96%;
+  margin: 10px 2% 0 2%;
 }
 
 .events_search_results {
-  height: 60%;
   overflow: scroll;
-  width: 100%;
+  width: 96%;
   display: block;
+  margin: 10px 2% 0 2%;
   border-bottom: 1px dotted rgba(200,200,200,1);
 }
-
-.show_attend {
-  display: block;
-  width: 100%;
-}
-
-#event_acceptor_identifier {
-  width: 97%;
-  height: 35px;
-  margin: 20px 1% 20px 1%;
-}
-
-.show_attend input[type=submit] {
-  margin: 0 20% 0 20%;
-  background-color: rgba(231, 76, 60,1.0);
-  width: 60%;
-  color: white;
-  font-size: 20px;
-  font-weight: 300;
-  border: none;
-  border-radius: 5px;
-}
-
-.show_attend input[type=submit]:hover, .show_attend input[type=submit]:active {
-  box-shadow: 0 0 5px white;
-  -o-transition:.3s;
-  -ms-transition:.3s;
-  -moz-transition:.3s;
-  -webkit-transition:.5s;
-}
-
-
 
 
 .hidden {
@@ -88,7 +79,7 @@
   width: 100%;
   overflow: hidden;
   border-bottom: 1px solid rgba(200,200,200,1);
-  background-color: rgba(250,250,250,0.8);
+  background-color: rgba(250,250,250,1);
   margin: 10px 0;
 }
 
@@ -97,9 +88,41 @@
   width: calc(100% - 5px);
 }
 
-input[type=button]{
-  margin-bottom: 35px;
+.show_attend {
+  width: 96%;
+  margin: 10px 2% 0 2%;
+  background: rgba(250,250,250,0.7);
 }
+
+#event_acceptor_identifier {
+  width: 97%;
+  height: 35px;
+  margin: 20px 1% 20px 1%;
+}
+
+.show_attend input[type=submit], .events_search_forms input[type=submit] {
+  margin: 10px 20% 10px 20%;
+  background-color: rgba(231, 76, 60,1.0);
+  width: 60%;
+  color: white;
+  font-size: 18px;
+  font-weight: 300;
+  border: none;
+  border-radius: 5px;
+}
+
+.show_attend input[type=submit]:hover, .show_attend input[type=submit]:active,
+.events_search_forms input[type=submit]:hover, .events_search_forms input[type=submit]:active {
+  box-shadow: 0 0 5px white;
+  -o-transition:.3s;
+  -ms-transition:.3s;
+  -moz-transition:.3s;
+  -webkit-transition:.5s;
+}
+
+
+
+
 
 
 
@@ -107,29 +130,16 @@ input[type=button]{
 
 
 .sidebar_events {
-  margin-left: 15px;
-  margin-top: 50px;
-  width: 60% px;
-  display: inline;
-  float: left;
-  height: 980px;
+  height: 50%px;
   overflow: scroll;
-  padding-right: 25px;
 }
 
 .location_search_container {
-  height: 600px;
   overflow: scroll;
 }
 
 .access_events {
-  margin-top: 50px;
-  width: 40%;
-  display: inline;
-  float: right;
-  padding-left: 100px;
-  padding-top: 60px;
-  border-left: 1px dotted rgba(200,200,200,1);
+
 }
 
 .yelp_logo {

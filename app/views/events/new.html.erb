@@ -1,16 +1,18 @@
-<section class="container">
+<div id="container">
 
-<div class="sidebar_events">
+  <div id="map"></div>
 
-  <h1>Propose Event</h1>
-    <%= render :partial => 'location' %>
+  <div id="events-sidebar">
+
+    <div class="sidebar_events">
+      <nav>Search Places</nav>
+      <%= render :partial => 'location' %>
+    </div>
+
+    <div class="access_events">
+      <%= render :partial => 'form' %>
+    </div>
 
 </div>
 
-<div class="access_events">
-
-  <%= render :partial => 'form' %>
-
-</div>
-
-</section>
+<script src="/assets/event.js"></script>

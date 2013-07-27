@@ -19,18 +19,19 @@
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <div id="beta"><p>Beta</p></div>
 
   <header>
-      <a href="/"><span class="logo">!</span><h1>momnts</h1></a>
+      <a href="/"><span class="logo">!</span><h1>momnts</h1><h1>.us</h1></a>
+      <div id="beta"><p>Beta</p></div>
       <div class="menunav">
-    	  <a href='/attend'><button>Attend</button></a>
-    	  <a href='/propose'><button>Propose</button></a>
+        <a href='/'><button>About</button></a>
+    	  <a href='/attend'><button>Find</button></a>
+    	  <a href='/propose'><button>Create</button></a>
     	  <a href='/users/edit'><button>
             <% if user_signed_in? %>
               <%= 'Account' %>
             <% else %>
-              <%= 'Sign In' %>
+              <%= 'Log In' %>
             <% end %>
         </button></a>
       </div>

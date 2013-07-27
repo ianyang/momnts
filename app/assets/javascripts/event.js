@@ -11,6 +11,13 @@ var marker;
 function initialize() {
   var myOptions = {
     zoom: 13,
+    mapTypeControl: false,
+    panControl: false,
+    zoomControl: true,
+    zoomControlOptions: {
+      style: google.maps.ZoomControlStyle.SMALL,
+      position: google.maps.ControlPosition.LEFT_BOTTOM
+    },
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
   var map = new google.maps.Map(document.getElementById("map"), myOptions);
@@ -80,10 +87,6 @@ function choose(event) {
 }
 
 $('body').on('click', '.event', choose);
-
-
-
-
 
 
 // $(function() {
