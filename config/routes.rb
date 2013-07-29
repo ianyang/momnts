@@ -8,8 +8,9 @@ Project::Application.routes.draw do
 
   resources :events
   get '/search' => 'events#search'
-  get '/attend' => 'events#index'
-  get '/propose' => 'events#new'
+  get '/findnew' => 'events#index'
+  get '/createnew' => 'events#new'
   get '/display' => 'events#display'
+  get '/all_events' => 'events#all_events'
 
 end

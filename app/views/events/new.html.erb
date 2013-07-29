@@ -4,15 +4,26 @@
 
   <div id="events-sidebar">
 
-    <div class="sidebar_events">
+    <div class="search-venue">
       <nav>Search Places</nav>
-      <%= render :partial => 'location' %>
+      <%= form_tag(controller: 'events', action: 'search', method: "") do %>
+        <h4>Looking for</h4>
+        <span><%= text_field_tag 'find'%></span>
+        <h4>in</h4>
+        <span><%= text_field_tag 'place' %></span>
+        <%= submit_tag 'Find' %>
+      <% end %>
     </div>
 
-    <div class="access_events">
+    <div class="venue-results">
+      <img src="assets/loading.gif" />
+    </div>
+
+    <div class="events-form">
       <%= render :partial => 'form' %>
     </div>
 
 </div>
 
 <script src="/assets/event.js"></script>
+<script src="../assets/event_locationsearch.js"></script>

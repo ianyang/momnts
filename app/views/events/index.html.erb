@@ -4,18 +4,37 @@
 
   <div id="events-sidebar">
 
-    <div class="events_search">
+    <div class="search">
       <nav>Search for Events</nav>
 
-      <div class="events_search_forms">
+      <div class = "search-selections">
+        
+        <div class="time">
+          <h3>Date</h3>
+          <button>Today</button>
+          <button>Tomorrow</button>
+        </div>
+
+        <div class="duration">
+          <h3>Duration</h3>
+          <button>30m</button>
+          <button>60m</button>
+          <button>90m</button>
+        </div>
+
+      </div>
+
+      <div class="search-form">
         <%= form_tag events_path, :method => 'get' do %>
-          <%= date_select :date, params[:date]%> for <%= select_tag :duration,
-            options_for_select([15,30,45,60,75,90]) %> mins
+          <div class="hidden">
+            <%= date_select :date, params[:date]%>
+            <%= select_tag :duration, options_for_select([15,30,45,60,75,90]) %> mins
+          </div>
           <%= submit_tag "Search" %>
         <% end %>
       </div>
 
-      <div class="events_search_results">
+      <div class="search-results">
         <% @events.each do |event|%>
           <div class="event">
             <img src="<%= event.image%>" />
@@ -33,8 +52,8 @@
       </div>
     </div>
 
-    <div class="show_attend">
-      <nav>Identify Yourself</nav>
+    <div class="attend">
+      <nav>Short Bio</nav>
       <%= form_for @event, :url => 'events/12', method: 'put' do |f| %>
         <div class="unhidden"></div>
         <%= f.text_field :acceptor_identifier %></br>

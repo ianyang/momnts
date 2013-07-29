@@ -1,35 +1,23 @@
 <%= form_for @event do |f| %>
 
-  <div class="when">
-
-    <div><%= f.label :date %>
+    <div><h4>Date</h4>
     <%= f.date_select :date, :start_year => Date.current.year, :end_year => 2014, :order => [:month, :day, :year] %></div>
-
-    <div><%= f.label :time %>
+    <div><h4>Time</h4>
     <%= f.time_select :time, {minute_step: 15, ampm: true} %></div>
-
-    <div><%= f.label :duration %>
+    <div><h4>Duration</h4>
     <%= f.select :duration, [15,30,45,60,75,90,"Get a life!"] %>mins</div>
-
-  </div>
-
-  <div class="what">
-    <h2>What</h2><br>
-
-    <div><%= f.label :topic %><i> (Max 150 characters)</i><br/>
+    <div><h4>Topic</h4>
     <%= f.text_field :topic %></div>
-
-    <div><%= f.label :creator_identifier, "How to identify you?" %></br>
+    <div><h4>Short Bio</h4>
     <%= f.text_field :creator_identifier %></div>
 
-  </div>
-
     <div class="hidden"><%= f.label :location %>
-    <%= f.text_field :location, :readonly => true %></div>
-    <div class="hidden"><%= f.label :address %>
-    <%= f.text_field :address, :readonly => true %></div>
-    <div class="hidden"><%= f.label :image %>
-    <%= f.text_field :image, :readonly => true %></div>
+      <%= f.text_field :location, :readonly => true %>
+      <%= f.label :address %>
+      <%= f.text_field :address, :readonly => true %>
+      <%= f.label :image %>
+      <%= f.text_field :image, :readonly => true %>
+    </div>
 
   <%= f.submit %>
 <% end %>
