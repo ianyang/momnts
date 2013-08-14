@@ -1,0 +1,54 @@
+.update-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(22,160,133,1);
+  z-index: 99999999;
+}
+
+.update {
+  width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  overflow: hidden;
+}
+
+.update h1 {
+  font-weight: 100;
+  margin-top: 50px;
+  color: white;
+}
+
+.update-header {
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  padding-bottom: 20px;
+  border-bottom: 1px dotted white;
+}
+
+.update-header h1 {
+  font-weight: 400;
+  float: left;
+  height: 50px;
+  line-height: 50px;
+  margin: 15px 0 0 5px;
+  color: white;
+}
+
+.update-header h1:nth-child(3) {
+  font-weight: 200;
+}
+
+.update-header .logo {
+  width:50px;
+  height:50px;
+  background: rgba(241, 196, 15,1.0);
+  border-radius:50%;
+  text-align:center;
+  float:left;
+  font-size: 26px;
+  color: white;
+  font-weight: 400;
+  margin: 15px 5px 0 20px;
+}

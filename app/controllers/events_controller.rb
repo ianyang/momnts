@@ -63,9 +63,14 @@ class EventsController < ApplicationController
     @find = params[:find]
     @place = params[:place]
 
+    consumer_key = YELP_CONSUMER_KEY
+    consumer_secret = YELP_CONSUMER_SECRET
+    token = YELP_TOKEN
+    token_secret = YELP_TOKEN_SECRET
+
     api_host = 'api.yelp.com'
-    consumer = OAuth::Consumer.new(YELP_CONSUMER_KEY, YELP_CONSUMER_SECRET, {:site => "http://#{api_host}"})
-    access_token = OAuth::AccessToken.new(consumer, YELP_TOKEN, YELP_TOKEN_SECRET)
+    consumer = OAuth::Consumer.new(consumer_key, consumer_secret, {:site => "http://#{api_host}"})
+    access_token = OAuth::AccessToken.new(consumer, token, token_secret)
     path = "/v2/search?term=#{URI.escape(@find)}&location=#{URI.escape(@place)}"
     @raw = access_token.get(path).body
     @results = JSON.load(@raw)["businesses"]
@@ -96,16 +101,6 @@ class EventsController < ApplicationController
 
   end
 
-  def edit
-    @event = Event.find(params[:id])
-  end
-
-  def update
-    @event = Event.find(params[:id])
-    @event.update_attributes(params[:event])
-    render :show
-  end
-
   def destroy
     event = Event.find(params[:id])
     event.delete
@@ -113,4 +108,16 @@ class EventsController < ApplicationController
   end
 
 end
+
+
+  # def edit
+  #   @event = Event.find(params[:id])
+  # end
+
+  # def update
+  #   @event = Event.find(params[:id])
+  #   @event.update_attributes(params[:event])
+  #   render :show
+  # end
+
 

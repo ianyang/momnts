@@ -4,7 +4,7 @@ Project::Application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
-  root :to => "home#index"
+  root :to => "home#updating"
 
   resources :events
   get '/search' => 'events#search'

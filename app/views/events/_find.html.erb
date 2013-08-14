@@ -1,0 +1,60 @@
+<div id="find">
+  <div class="search">
+    <nav>Search for Events</nav>
+
+    <div class = "search-selections">
+
+      <div class="time">
+        <h3>Date</h3>
+        <button>Today</button>
+        <button>Tomorrow</button>
+      </div>
+
+      <div class="duration">
+        <h3>Duration</h3>
+        <button>30m</button>
+        <button>60m</button>
+        <button>90m</button>
+      </div>
+
+    </div>
+
+    <div class="search-form">
+      <%= form_tag events_path, :method => 'get' do %>
+        <div class="hidden">
+          <%= date_select :date, params[:date]%>
+          <%= select_tag :duration, options_for_select([15,30,45,60,75,90]) %> mins
+        </div>
+        <%= submit_tag "Search" %>
+      <% end %>
+    </div>
+
+    <div class="search-results">
+      <% @events.each do |event|%>
+        <div class="event">
+          <img src="<%= event.image%>" />
+          <div><h4><%= event.location %></h4></div>
+          <div><%= event.time.strftime("%I:%M %P") %> for <%= event.duration %>mins</div>
+          <div>"<%= event.topic %>"</div>
+          <div class="hidden">
+            <div class="lat"><%= event.latitude %></div>
+            <div class="long"><%= event.longitude %></div>
+            <div class="tol"><%= event.topic %></div>
+            <div class="eventid"><%= event.id %></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="attend">
+    <nav>Short Bio</nav>
+    <%= form_for @event, :url => 'events/12', method: 'put' do |f| %>
+      <div class="unhidden"></div>
+      <%= f.text_field :acceptor_identifier %></br>
+      <%= f.hidden_field :acceptor_id, :value => current_user.id %></br>
+      <%= f.submit "Confirm"%>
+    <% end %>
+  </div>
+
+</div>

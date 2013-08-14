@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Momnts - Quick meets over a meal</title>
+  <title>Momnts.us || Quick meets to inspire</title>
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhecwIsLs-DjQRKgeO5ycziDhAswc7ofo&&libraries=places&sensor=true">
-  </script>
+
+  <script src='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
+  <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.css' rel='stylesheet' />
+
   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 </head>
@@ -18,8 +19,7 @@
       <div id="beta"><p>Beta</p></div>
       <div class="menunav">
         <a href='/'><button>About</button></a>
-    	  <a href='/findnew'><button>Find</button></a>
-    	  <a href='/createnew'><button>Create</button></a>
+    	  <a href='/findnew'><button>Events</button></a>
     	  <a href='/users/edit'><button>
             <% if user_signed_in? %>
               <%= 'Account' %>
