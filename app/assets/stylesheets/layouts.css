@@ -141,11 +141,11 @@ header .current-page h3 {
 }
 
 .popout .buttons div:nth-child(2n+1) {
-  background: rgba(22,160,133,0.3);
+  background: rgba(255,255,255,0.1);
 }
 
 .popout .buttons div:nth-child(2n) {
-  background: rgba(22,160,133,0.1);
+  background: rgba(255,255,255,0.3);
 }
 
 .popout .buttons div h3 a {
@@ -218,6 +218,7 @@ input[type=submit] {
   background-color: rgba(22,160,133,1);
   color: white;
   border-radius: 2px;
+  border: none;
 }
 
 input[type=submit]:active {
