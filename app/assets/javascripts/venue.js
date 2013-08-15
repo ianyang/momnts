@@ -20,10 +20,10 @@ $(function() {
       data: {"find": searchFind, "place": searchPlace},
       success: function(data) {
         $.each(data, function(x) {
-          $('.results').append('<div class="results-element">'
-            + "<a href='" + data[x]["url"] + "'><img src='" + data[x]["image_url"] + "' /></a>"
-            + "<h3>" + data[x]["name"] + "</h3>"
-            + "<p>" + data[x]["location"]["display_address"] + "</p>"
+          $('.results').append('<div class="venue-container">'
+            + "<div class='image'><img src='" + data[x]["image_url"] + "' /></div>"
+            + "<div class='info'><h3>" + data[x]["name"] + "</h3>"
+            + "<p>" + data[x]["location"]["display_address"] + "</p></div>"
             + '</div>');
         });
       }

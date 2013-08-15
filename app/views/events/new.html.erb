@@ -15,16 +15,14 @@
     <button class="search-icon"><span class="entypo-search"></span></button>
     <span>
       <%= form_tag(controller: 'events', action: 'search', method: "") do %>
-        <%= text_field_tag(:find , nil, placeholder: 'what you like e.g. coffee') %>
+        <%= text_field_tag(:find , nil, placeholder: 'something near you e.g. coffee') %>
         <%= hidden_field_tag 'place', 'San Francisco' %>
         <div class='hidden'><%= submit_tag 'Find' %></div>
       <% end %>
     </span>
   </div>
 
-  <div class="results">
-
-  </div>
+  <div class="results"></div>
 
   <div class="form">
     <%= form_for @event do |f| %>
