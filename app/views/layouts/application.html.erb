@@ -11,39 +11,12 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="user-scalable=0, initial-scale=1.0">
+
 </head>
 <body>
 
-  <header>
-      <a href="/"><span class="logo">!</span><h1>momnts</h1><h1>.us</h1></a>
-      <div id="beta"><p>Beta</p></div>
-      <div class="menunav">
-        <a href='/'><button>About</button></a>
-    	  <a href='/findnew'><button>Events</button></a>
-    	  <a href='/users/edit'><button>
-            <% if user_signed_in? %>
-              <%= 'Account' %>
-            <% else %>
-              <%= 'Log In' %>
-            <% end %>
-        </button></a>
-      </div>
-  </header>
-
-  <div class="alertsdiv">
-    <div class="alerts">
-      <%flash.each do|key,value|%>
-        <div class="alert alert-<%=key%>"> <%=value%> </div>
-      <%end%>
-    </div>
-  </div>
-
   <%= yield %>
 
-<!--   <footer>
-  	<p>Designed by <b>Ian Yang</b></p>
-  	<a href="http://www.twitter.com/ianyyang"><img class="twitter" src="http://storm-project.net/images/logos/twitter.png" /></a>
-    <a href="mailto:ian@ianyang.co"><img class="mail" src="assets/mail.png" /></a>
-  </footer> -->
 </body>
 </html>

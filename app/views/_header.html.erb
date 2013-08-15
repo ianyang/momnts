@@ -1,0 +1,23 @@
+<header>
+    <a href="/"><span class="logo">!</span><h1>momnts</h1><h1>.us</h1></a>
+    <div id="beta"><p>Beta</p></div>
+    <div class="menunav">
+      <a href='/'><button>About</button></a>
+      <a href='/findnew'><button>Events</button></a>
+      <a href='/users/edit'><button>
+          <% if user_signed_in? %>
+            <%= 'Account' %>
+          <% else %>
+            <%= 'Log In' %>
+          <% end %>
+      </button></a>
+    </div>
+</header>
+
+<div class="alertsdiv">
+  <div class="alerts">
+    <%flash.each do|key,value|%>
+      <div class="alert alert-<%=key%>"> <%=value%> </div>
+    <%end%>
+  </div>
+</div>
