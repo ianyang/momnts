@@ -1,6 +1,28 @@
 $(function() {
   "use strict";
 
+  $('.results').empty();
+
+  var searchFind = 'lunch';
+  var searchPlace = 'san francisco';
+
+  $.ajax({
+    url: "/search",
+    method: "get",
+    dataType: "json",
+    data: {"find": searchFind, "place": searchPlace},
+    success: function(data) {
+      $.each(data, function(x) {
+        $('.results').append('<div class="venue-container">'
+          + "<div class='image'><img src='" + data[x]["image_url"] + "' /></div>"
+          + "<div class='info'><h3>" + data[x]["name"] + "</h3>"
+          + "<p>" + data[x]["location"]["display_address"] + "</p></div>"
+          + '</div>');
+      });
+      $('.loading').css('display','none');
+    }
+  });
+
   $('.venue form').on("submit", function(event) {
     event.preventDefault();
   });
@@ -9,9 +31,10 @@ $(function() {
     event.preventDefault();
 
     $('.results').empty();
+    $('.loading').css('display','block');
 
-    var searchFind = $('#find').val();
-    var searchPlace = $('#place').val();
+    searchFind = $('#find').val();
+    searchPlace = $('#place').val();
 
     $.ajax({
       url: "/search",
@@ -26,6 +49,7 @@ $(function() {
             + "<p>" + data[x]["location"]["display_address"] + "</p></div>"
             + '</div>');
         });
+        $('.loading').css('display','none');
       }
     })
 

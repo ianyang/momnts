@@ -36,6 +36,17 @@
   top: 30%;
 }
 
+.loading {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  display: block;
+}
+
+.loading img {
+  width: 100%;
+}
+
 /*results div*/
 
 .results {

@@ -22,7 +22,12 @@
     </span>
   </div>
 
-  <div class="results"></div>
+  <div class="loading">
+    <%= image_tag("loading.gif") %>
+  </div>
+
+  <div class="results">
+  </div>
 
   <div class="form">
     <%= form_for @event do |f| %>
