@@ -14,7 +14,7 @@ body, html {
   font-weight: 300;
   color: rgba(60,60,60,1);
   position: relative;
-  font-size: 16px;
+  font-size: 12px;
   max-width: 768px;
 }
 
@@ -28,7 +28,7 @@ header {
   top: 0;
   border-bottom: 1px solid rgba(180,180,180,1);
   min-width: 320px;
-  max-width: 640px;
+  max-width: 768px;
 }
 
 header .open-popout {
@@ -52,6 +52,8 @@ header .current-page {
   position: absolute;
   top: 0;
   right: 0;
+  left: 0;
+  bottom: 0;
   height: 100%;
   padding: 0 10px 0 10px;
   text-align: center;
@@ -61,7 +63,7 @@ header .current-page {
 
 header .current-page h3 {
   font-weight: 500;
-  color: rgba(120,120,110,1);
+  font-size: 1.3em;
 }
 
 /*popout*/
@@ -69,14 +71,15 @@ header .current-page h3 {
 .popout {
   z-index: 99999999;
   position: fixed;
-  width: 40%;
+  width: 85%;
   height: 100%;
-  background: rgba(255,255,255,0.9);
+  background-image: url(/assets/sideimage.jpg);
+  background-size: cover;
   left: 0;
   top: 0;
   max-width: 256px;
-  border-right: 1px solid rgba(220,220,220,1);
-  margin-left: -50%;
+  margin-left: -90%;
+  opacity: 0.95;
 }
 
 .popout .logos{
@@ -109,19 +112,20 @@ header .current-page h3 {
   margin-top: 2%;
   width: 100%;
   text-align: center;
+  color: white;
 }
 
-.popout .text h3 {
+.popout .text h2 {
   display: inline;
+  font-size: 1.5em;
 }
 
-.popout .text h3:nth-child(2) {
-  font-weight: 100;
+.popout .text h2:nth-child(1) {
+  font-weight: 400;
 }
 
 .popout .buttons {
   width: 100%;
-  border-bottom: 1px solid rgba(240,240,240,1);
   position: absolute;
   bottom: 10%;
 }
@@ -130,13 +134,20 @@ header .current-page h3 {
   display: block;
   height: 40px;
   width: 100%;
-  border-top: 1px solid rgba(240,240,240,1);
   text-align: center;
-  font-weight: 400;
+  font-weight: 100;
   line-height: 30px;
-
+  font-size: 1.3em;
 }
 
+.popout .buttons div h3 a {
+  color: white;
+}
+
+.popout .buttons div h3 a:link,
+.popout .buttons div h3 a:visited {
+  color: white;
+}
 
 .alertsdiv {
   padding-top: 50px;
@@ -149,10 +160,9 @@ header .current-page h3 {
 
 .container {
   margin: 0;
-  height: 100%;
   width: 100%;
   overflow:hidden; /* this is the easiest way to clear floats... but it's not right for every situation */
-  background: red;
+  background: rgba(252,252,252,1);
 }
 
 footer {

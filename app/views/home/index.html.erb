@@ -15,8 +15,8 @@
       <%= form_tag do %>
         <div><%= email_field_tag(:email, nil, placeholder: 'Email') %></div>
         <div><%= password_field_tag(:password, nil, placeholder: '****') %></div>
-        <div><%= submit_tag("Sign In") %></div>
-        <div><%= submit_tag("Sign Up") %></div>
+        <div><%= submit_tag("Sign In / Sign Up") %></div>
+        <div><%= link_to 'Just Browsing', '/findnew' %></div>
       <% end %>
     </div>
   </div>
@@ -24,7 +24,7 @@
 </div>
 
 
-<div class="info">
+<div class="container">
 
 
   <div class="threecol">
@@ -43,3 +43,5 @@
   </div>
 
 </div>
+
+<%= render :partial => 'partials/footer' %>
