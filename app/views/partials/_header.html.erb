@@ -1,0 +1,38 @@
+<header>
+    <div class="current-page">
+      <h3>Find Events</h3>
+    </div>
+    <div class="open-popout">
+      <span class="entypo-menu"></span>
+    </div>
+</header>
+
+<div class="alertsdiv">
+  <div class="alerts">
+    <%flash.each do|key,value|%>
+      <div class="alert alert-<%=key%>"> <%=value%> </div>
+    <%end%>
+  </div>
+</div>
+
+<div class="popout">
+
+  <div class="logos">
+    <div class="logo">
+      <span class="sign">!</span>
+    </div>
+    <div class="text">
+      <h3>momnts</h3><h3>.us</h3>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <div><%= link_to('About', '/') %></div>
+    <div><%= link_to('Find', '/findnew') %></div>
+    <div><%= link_to('Create', '/findnew') %></div>
+    <div><%= link_to('Account', '/users/edit') %></div>
+  </div>
+
+</div>
+
+<%= javascript_include_tag "header.js" %>

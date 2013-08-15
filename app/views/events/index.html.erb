@@ -1,20 +1,11 @@
-<div id="container">
+<%= render :partial => 'partials/header' %>
 
-  <div id="map"></div>
+<div class="container">
 
-  <div id="events-sidebar">
-    <div class="buttons">
-      <button>Find</button>
-      <button>Create</button>
-    </div>
-  <%= render :partial => 'find' %>
-  <%= render :partial => 'create' %>
 
-  </div>
 
-<%= javascript_tag do %>
-    var currentlocate = <%= [@userlat, @userlon] %>
-<% end %>
 
-<script src="/assets/event.js"></script>
-<script src="../assets/event_locationsearch.js"></script>
+
+
+</div>
+<%= render :partial => 'partials/footer' %>
