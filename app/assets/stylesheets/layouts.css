@@ -15,7 +15,7 @@ body, html {
   color: rgba(60,60,60,1);
   position: relative;
   font-size: 16px;
-  max-width: 640px;
+  max-width: 768px;
 }
 
 header {
