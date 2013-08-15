@@ -1,32 +1,32 @@
 <header>
-    <div class="current-page">
-      <h3>Create Event</h3>
-    </div>
-    <div class="open-popout">
-      <span class="entypo-menu"></span>
-    </div>
+  <div class="current-page">
+    <h3>Create Event</h3>
+  </div>
+  <div class="open-popout">
+    <span class="entypo-menu"></span>
+  </div>
 </header>
 
 <%= render :partial => 'partials/topper' %>
 
 <div class="container">
 
-  <div class="search-venue">
-    <nav>Search Places</nav>
-    <%= form_tag(controller: 'events', action: 'search', method: "") do %>
-      <h4>Looking for</h4>
-      <span><%= text_field_tag 'find'%></span>
-      <h4>in</h4>
-      <span><%= text_field_tag 'place' %></span>
-      <%= submit_tag 'Find' %>
-    <% end %>
+  <div class="venue">
+    <button class="search-icon"><span class="entypo-search"></span></button>
+    <span>
+      <%= form_tag(controller: 'events', action: 'search', method: "") do %>
+        <%= text_field_tag(:find , nil, placeholder: 'what you like e.g. coffee') %>
+        <%= hidden_field_tag 'place', 'San Francisco' %>
+        <div class='hidden'><%= submit_tag 'Find' %></div>
+      <% end %>
+    </span>
   </div>
 
-  <div class="venue-results">
-    <img src="assets/loading.gif" />
+  <div class="results">
+
   </div>
 
-  <div class="events-form">
+  <div class="form">
     <%= form_for @event do |f| %>
 
       <div><h4>Date</h4>
@@ -52,12 +52,7 @@
 
 </div>
 
-
-
-
-
-
-
-
 </div>
 <%= render :partial => 'partials/footer' %>
+
+<%= javascript_include_tag 'venue.js' %>
