@@ -1,52 +1,63 @@
-<div id="container">
-
-  <div id="map"></div>
-
-  <div id="events-sidebar">
-
-    <div class="search-venue">
-      <nav>Search Places</nav>
-      <%= form_tag(controller: 'events', action: 'search', method: "") do %>
-        <h4>Looking for</h4>
-        <span><%= text_field_tag 'find'%></span>
-        <h4>in</h4>
-        <span><%= text_field_tag 'place' %></span>
-        <%= submit_tag 'Find' %>
-      <% end %>
+<header>
+    <div class="current-page">
+      <h3>Create Event</h3>
     </div>
-
-    <div class="venue-results">
-      <img src="assets/loading.gif" />
+    <div class="open-popout">
+      <span class="entypo-menu"></span>
     </div>
+</header>
 
-    <div class="events-form">
-      <%= form_for @event do |f| %>
+<%= render :partial => 'partials/topper' %>
 
-        <div><h4>Date</h4>
-        <%= f.date_select :date, :start_year => Date.current.year, :end_year => 2014, :order => [:month, :day, :year] %></div>
-        <div><h4>Time</h4>
-        <%= f.time_select :time, {minute_step: 15, ampm: true} %></div>
-        <div><h4>Duration</h4>
-        <%= f.select :duration, [15,30,45,60,75,90,"Get a life!"] %>mins</div>
-        <div><h4>Topic</h4>
-        <%= f.text_field :topic %></div>
-        <div><h4>Short Bio</h4>
-        <%= f.text_field :creator_identifier %></div>
+<div class="container">
 
-        <div class="hidden"><%= f.label :location %>
-          <%= f.text_field :location, :readonly => true %>
-          <%= f.label :address %>
-          <%= f.text_field :address, :readonly => true %>
-          <%= f.label :image %>
-          <%= f.text_field :image, :readonly => true %>
-        </div>
-
-        <%= f.submit %>
-      <% end %>
-    </div>
-
+  <div class="search-venue">
+    <nav>Search Places</nav>
+    <%= form_tag(controller: 'events', action: 'search', method: "") do %>
+      <h4>Looking for</h4>
+      <span><%= text_field_tag 'find'%></span>
+      <h4>in</h4>
+      <span><%= text_field_tag 'place' %></span>
+      <%= submit_tag 'Find' %>
+    <% end %>
   </div>
+
+  <div class="venue-results">
+    <img src="assets/loading.gif" />
+  </div>
+
+  <div class="events-form">
+    <%= form_for @event do |f| %>
+
+      <div><h4>Date</h4>
+      <%= f.date_select :date, :start_year => Date.current.year, :end_year => 2014, :order => [:month, :day, :year] %></div>
+      <div><h4>Time</h4>
+      <%= f.time_select :time, {minute_step: 15, ampm: true} %></div>
+      <div><h4>Duration</h4>
+      <%= f.select :duration, [15,30,45,60,75,90,"Get a life!"] %>mins</div>
+      <div><h4>Topic</h4>
+      <%= f.text_field :topic %></div>
+      <div><h4>Short Bio</h4>
+      <%= f.text_field :creator_identifier %></div>
+
+      <div class="hidden">
+        <%= f.text_field :location, :readonly => true %>
+        <%= f.text_field :address, :readonly => true %>
+        <%= f.text_field :image, :readonly => true %>
+      </div>
+
+      <%= f.submit %>
+    <% end %>
+  </div>
+
 </div>
 
-<script src="/assets/event.js"></script>
-<script src="../assets/event_locationsearch.js"></script>
+
+
+
+
+
+
+
+</div>
+<%= render :partial => 'partials/footer' %>
