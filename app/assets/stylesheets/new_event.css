@@ -1,4 +1,4 @@
-.venue {
+.new-event .venue {
   width: 100%;
   height: 80px;
   background: rgba(250,250,250,1);
@@ -6,7 +6,7 @@
   position: relative;
 }
 
-.search-icon {
+.new-event .search-icon {
   font-size: 22px;
   position: absolute;
   top: 30%;
@@ -22,12 +22,12 @@
   padding: 0;
 }
 
-.search-icon:active {
+.new-event .search-icon:active {
   background: rgba(22,160,133,0.7);
 }
 
 
-#find {
+.new-event #find {
   width: 70%;
   height: 28px;
   padding: 0;
@@ -36,58 +36,58 @@
   top: 30%;
 }
 
-.loading {
+.new-event .loading {
   width: 100px;
   height: 100px;
   margin: 0 auto;
   display: block;
 }
 
-.loading img {
+.new-event .loading img {
   width: 100%;
 }
 
 /*results div*/
 
-.results {
+.new-event .results {
+  padding-top: 10px;
   width: 100%;
   overflow: hidden;
 }
 
-.venue-container {
+.new-event .venue-container {
   width: 50%;
   height: 240px;
   float: left;
   margin: 2% auto;
 }
 
-.venue-container .image {
+.new-event .venue-container .image {
   width: 90%;
   max-height: 180px;
   margin: 0 auto;
   padding: 0;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(180,180,180,1);
+  box-shadow: 0 0 10px rgba(120,120,120,1);
 }
 
-.venue-container .image img {
+.new-event .venue-container .image img {
   width: 100%;
 }
 
-.venue-container .info {
+.new-event .venue-container .info {
   width: 90%;
   margin: 0 auto;
   text-align: center;
   overflow: hidden;
 }
 
-.venue-container .info h3 {
+.new-event .venue-container .info h3 {
   font-weight: 400;
-  margin: 0;
   font-size: 1.2em;
 }
 
-.venue-container .info p {
+.new-event .venue-container .info p {
   font-weight: 400;
   margin: 0;
   color: rgba(100,100,100,1);
@@ -96,53 +96,43 @@
 
 /*form div*/
 
-.form .input-container {
+.new-event .form .input-container {
   width: 100%;
   height: 60px;
   border-top: 1px dotted rgba(200,200,200,1);
 }
 
-.form .input-container .input-name {
+.new-event .form .input-container .input-name {
   width: 30%;
   height: 100%;
   float: left;
   background: rgba(240,240,240,1);
 }
 
-.form .input-container .input-name h2 {
+.new-event .form .input-container .input-name h2 {
   line-height: 60px;
   margin-left: 10%;
 }
 
-.form .input-container .input-field {
+.new-event .form .input-container .input-field {
   width: 70%;
   height: 100%;
   overflow: hidden;
 }
 
-.form .input-container .input-field select {
+.new-event .form select {
   border: none;
-  border-radius: 2px;
-  background: rgba(0,0,0,0.1);
-  height: 30px;
-  margin: 5%;
-  padding: 0 5%;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -o-appearance: none;
-  -ms-appearance: none;
+  margin: 5% 3%;
 }
 
-.form input[type=text] {
-  margin: 3% 2%;
+.new-event .form input[type=text] {
+  margin: 5% 3%;
   width: 90%;
-  height: 25px;
 }
 
-.form input[type=submit] {
+.new-event .form input[type=submit] {
   margin: 5% 20%;
   width: 60%;
-  height: 35px;
 }
 
 

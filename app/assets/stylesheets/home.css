@@ -98,8 +98,13 @@
 
 .hero .sign-in .form div input {
 	width: 70%;
-	height: 60%;
   border: none;
+  margin: 0;
+}
+
+
+.hero .sign-in .form div input[type=submit] {
+  width: 50%;
 }
 
 .threecol {
