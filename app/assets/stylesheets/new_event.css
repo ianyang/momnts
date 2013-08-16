@@ -82,8 +82,9 @@
 }
 
 .venue-container .info h3 {
-  font-weight: 800;
+  font-weight: 400;
   margin: 0;
+  font-size: 1.2em;
 }
 
 .venue-container .info p {
@@ -93,263 +94,55 @@
 }
 
 
-/*buttons*/
+/*form div*/
 
-
-#events-sidebar .time {
-  overflow: hidden;
-  margin-top: 10px;
-}
-
-#events-sidebar .duration {
-  overflow: hidden;
-  margin-top: 10px;
-}
-
-#events-sidebar h3 {
-  width: 40%;
-  line-height: 30px;
-  margin: 0 0 0 10px;
-  float: left;
-  vertical-align: middle;
-}
-
-#events-sidebar .search-form {
-  width: 25%;
-  height: 80px;
-  float: left;
-  overflow: hidden;
-}
-
-#events-sidebar .search-form input[type=submit] {
-  background-color: rgba(231, 76, 60,1.0);
-  width: 80px;
-  height: 30px;
-  color: white;
-  font-size: 16px;
-  font-weight: 400;
-  border: none;
-  border-radius: 5px;
-  margin-top: 30px;
-  right:0;
-
-}
-
-
-#events-sidebar .search-results {
-  overflow: scroll;
-  width: 96%;
-  display: block;
-  margin: 10px 2% 0 2%;
-  border-bottom: 1px dotted rgba(200,200,200,1);
-}
-
-.event {
+.form .input-container {
   width: 100%;
-  overflow: hidden;
-  border-bottom: 1px solid rgba(200,200,200,1);
-  background-color: rgba(250,250,250,1);
+  height: 60px;
+  border-top: 1px dotted rgba(200,200,200,1);
 }
 
-.event img{
-  width: 80px;
-  border-radius: 50%;
+.form .input-container .input-name {
+  width: 30%;
+  height: 100%;
   float: left;
-  margin: 15px;
+  background: rgba(240,240,240,1);
 }
 
-.event h4{
-  line-height: 15px;
-  margin-top: 15px;
-  margin-bottom: 10px;
+.form .input-container .input-name h2 {
+  line-height: 60px;
+  margin-left: 10%;
 }
 
-.event:hover {
-  border-right: 5px solid rgba(22,160,133,1);
-  width: calc(100% - 5px);
+.form .input-container .input-field {
+  width: 70%;
+  height: 100%;
+  overflow: hidden;
 }
 
-#events-sidebar .attend {
-  width: 96%;
-  margin: 10px 2% 0 2%;
-  background: rgba(250,250,250,0.7);
-}
-
-#event_acceptor_identifier {
-  width: 97%;
-  height: 35px;
-  margin: 20px 1% 20px 1%;
-}
-
-/*#events-sidebar input[type=submit] {
-  margin: 10px 20% 10px 20%;
-  background-color: rgba(231, 76, 60,1.0);
-  width: 60%;
-  color: white;
-  font-size: 18px;
-  font-weight: 300;
+.form .input-container .input-field select {
   border: none;
-  border-radius: 5px;
-}*/
-
-
-/*specific to create events page*/
-
-#events-sidebar input[type=text] {
-  background-color: rgba(255,255,255,0.8);
-  border: 1px solid white;
-  border-radius: 5px;
-  font-weight: 200;
-}
-
-#events-sidebar .search-venue {
-  width: 96%;
-  margin: 10px 2% 0 2%;
-  background: rgba(250,250,250,0.7);
-  overflow: hidden;
-  border-bottom: 1px solid rgba(200,200,200,1);
-}
-
-#events-sidebar .search-venue h4 {
-  height: 35px;
-  float: left;
-  margin: 10px 5px 0 5px;
-}
-
-#events-sidebar .search-venue span {
-  float: left;
-  margin: 10px 5px 0 5px;
-}
-
-#events-sidebar .search-venue input[type=text] {
-  width: 100px;
-}
-
-#events-sidebar .search-venue input[type=submit] {
-  background-color: rgba(231, 76, 60,1.0);
-  color: white;
-  font-size: 16px;
-  font-weight: 300;
-  border: none;
-  border-radius: 5px;
-  float: left;
-  margin: 10px 0 0 15px;
-}
-
-#events-sidebar .venue-results {
-  width: 96%;
-  margin: 0 2% 0 2%;
-  background: rgba(250,250,250,0.7);
-  overflow: scroll;
-  height: 48%;
-}
-
-#events-sidebar .venue-results img {
-  width: 100px;
-  margin: 0 auto;
-  display: none;
-}
-
-.results-element {
-  margin: 10px 0;
-  width: 350px;
-  border-bottom: 1px solid rgba(200,200,200,1);
-  overflow: hidden;
-}
-
-.results-element:hover {
-  border-right: 5px solid rgba(22,160,133,1);
-}
-
-.results-element a{
-  float: left;
-  margin-right: 10px;
-  margin-top: 15px;
-}
-
-.results-element h3 {
-  margin-top: 25px;
-  height: 5px;
-}
-
-.results-element p {
-  margin-top: 5px;
-}
-.results-element img {
-  width: 80px;
-  border-radius: 50%;
-  margin-left: 10px;
-}
-
-.results-element button {
-  margin-left: 90px;
-  margin-bottom: 15px;
-}
-
-#events-sidebar .events-form {
-  width: 96%;
-  margin: 10px 2% 0 2%;
-  background: rgba(250,250,250,0.7);
-  overflow: hidden;
-  border-bottom: 1px solid rgba(200,200,200,1);
-  height: 35%;
-}
-
-#events-sidebar .events-form div {
-  height: 35px;
-  display: block;
-  margin: 8px 0 5px 5px;
-}
-
-#events-sidebar .events-form .hidden {
-  display: none;
-}
-
-#events-sidebar .events-form h4 {
-  height: 35px;
-  float: left;
-  margin: 0;
-  width: 100px;
-}
-
-#events-sidebar .events-form select {
-  background: rgba(255,255,255,0.8);
+  border-radius: 2px;
+  background: rgba(0,0,0,0.1);
+  height: 30px;
+  margin: 5%;
+  padding: 0 5%;
   -webkit-appearance: none;
   -moz-appearance: none;
   -o-appearance: none;
   -ms-appearance: none;
-  border: 1px solid white;
-  border-radius: 5px;
-  font-weight: 200;
-  font-size: 16px;
-  margin-right: 2px;
 }
 
-#events-sidebar .events-form input[type=text] {
-  width: 280px;
+.form input[type=text] {
+  margin: 3% 2%;
+  width: 90%;
+  height: 25px;
 }
 
-#events-sidebar .events-form input[type=submit] {
-  background: rgba(231, 76, 60,1.0);
-  color: white;
-  font-size: 16px;
-  font-weight: 300;
-  border: none;
-  border-radius: 5px;
-  display: block;
-  margin: 0px auto 10px auto;
+.form input[type=submit] {
+  margin: 5% 20%;
+  width: 60%;
+  height: 35px;
 }
 
-
-/*Confirmation page*/
-
-.confirm_img img{
-  border-radius: 50%;
-}
-
-.acceptance {
-  color: rgba(255,255,255,1);
-  background-color: rgba(22,160,133,1);
-  padding: 2px;
-}
 

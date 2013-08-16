@@ -1,27 +1,31 @@
 $(function() {
   "use strict";
 
+  function yelp() {
+    $.ajax({
+      url: "/search",
+      method: "get",
+      dataType: "json",
+      data: {"find": searchFind, "place": searchPlace},
+      success: function(data) {
+        $.each(data, function(x) {
+          $('.results').append('<div class="venue-container">'
+            + "<div class='image'><img src='" + data[x]["image_url"] + "' /></div>"
+            + "<div class='info'><h3>" + data[x]["name"] + "</h3>"
+            + "<p>" + data[x]["location"]["address"] + "</p>"
+            + "<p>" + data[x]["location"]["neighborhoods"] + "</p></div>"
+            + '</div>');
+        });
+        $('.loading').css('display','none');
+      }
+    });
+  };
+
   $('.results').empty();
 
   var searchFind = 'lunch';
   var searchPlace = 'san francisco';
-
-  $.ajax({
-    url: "/search",
-    method: "get",
-    dataType: "json",
-    data: {"find": searchFind, "place": searchPlace},
-    success: function(data) {
-      $.each(data, function(x) {
-        $('.results').append('<div class="venue-container">'
-          + "<div class='image'><img src='" + data[x]["image_url"] + "' /></div>"
-          + "<div class='info'><h3>" + data[x]["name"] + "</h3>"
-          + "<p>" + data[x]["location"]["display_address"] + "</p></div>"
-          + '</div>');
-      });
-      $('.loading').css('display','none');
-    }
-  });
+  yelp();
 
   $('.venue form').on("submit", function(event) {
     event.preventDefault();
@@ -35,41 +39,24 @@ $(function() {
 
     searchFind = $('#find').val();
     searchPlace = $('#place').val();
-
-    $.ajax({
-      url: "/search",
-      method: "get",
-      dataType: "json",
-      data: {"find": searchFind, "place": searchPlace},
-      success: function(data) {
-        $.each(data, function(x) {
-          $('.results').append('<div class="venue-container">'
-            + "<div class='image'><img src='" + data[x]["image_url"] + "' /></div>"
-            + "<div class='info'><h3>" + data[x]["name"] + "</h3>"
-            + "<p>" + data[x]["location"]["display_address"] + "</p></div>"
-            + '</div>');
-        });
-        $('.loading').css('display','none');
-      }
-    })
+    yelp();
 
   });
 
-  function choose(event) {
-    event.preventDefault();
+  function choose() {
 
     var $this = $(this);
-    $('.venue-results').empty();
-    $('.venue-results').append('<h2>You have chosen<h2>');
-    $('.venue-results').append($this);
-
-    $this.css('border', '5px solid rgba(22,160,133,1)');
+    $('.results').empty();
+    $('.results').append('<h3>You are going to<h3>');
+    $('.results').append($this);
+    $('.results').css('text-align','center');
+    $('.venue-container').css('margin-left','25%');
 
     $('#event_address').val($('.results-element p').text());
     $('#event_location').val($('.results-element h3').text());
     $('#event_image').val($('.results-element img')[0].src);
   };
 
-  $('body').on('click', '.results-element', choose);
+  $('body').on('click', '.venue-container', choose);
 
 });

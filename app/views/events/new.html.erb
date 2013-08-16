@@ -32,24 +32,48 @@
   <div class="form">
     <%= form_for @event do |f| %>
 
-      <div><h4>Date</h4>
-      <%= f.date_select :date, :start_year => Date.current.year, :end_year => 2014, :order => [:month, :day, :year] %></div>
-      <div><h4>Time</h4>
-      <%= f.time_select :time, {minute_step: 15, ampm: true} %></div>
-      <div><h4>Duration</h4>
-      <%= f.select :duration, [15,30,45,60,75,90,"Get a life!"] %>mins</div>
-      <div><h4>Topic</h4>
-      <%= f.text_field :topic %></div>
-      <div><h4>Short Bio</h4>
-      <%= f.text_field :creator_identifier %></div>
-
-      <div class="hidden">
-        <%= f.text_field :location, :readonly => true %>
-        <%= f.text_field :address, :readonly => true %>
-        <%= f.text_field :image, :readonly => true %>
+      <div class="input-container">
+        <div class="input-name"><h2>Date</h2></div>
+        <div class="input-field">
+          <%= f.date_select :date, :start_year => Date.current.year, :end_year => 2014, :order => [:month, :day, :year] %>
+        </div>
       </div>
 
-      <%= f.submit %>
+      <div class="input-container">
+        <div class="input-name"><h2>Time</h2></div>
+        <div class="input-field">
+          <%= f.time_select :time, {minute_step: 15, ampm: true} %>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <div class="input-name"><h2>Duration</h2></div>
+        <div class="input-field">
+          <%= f.select :duration, [15,30,45,60,75,90,"Get a life!"] %>mins
+        </div>
+      </div>
+
+      <div class="input-container">
+        <div class="input-name"><h2>Topic</h2></div>
+        <div class="input-field">
+          <%= f.text_field :topic, :placeholder => "what you want to talk about" %>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <div class="input-name"><h2>Short Bio</h2></div>
+        <div class="input-field">
+          <%= f.text_field :creator_identifier, :placeholder => "what you look like" %>
+        </div>
+      </div>
+
+      <%= f.hidden_field :location, :readonly => true %>
+      <%= f.hidden_field :address, :readonly => true %>
+      <%= f.hidden_field :image, :readonly => true %>
+
+      <div class="input-container">
+        <%= f.submit %>
+      </div>
     <% end %>
   </div>
 
