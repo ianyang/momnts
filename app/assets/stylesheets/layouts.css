@@ -220,6 +220,8 @@ input[type=submit] {
   border: none;
   height: 35px;
   padding: 2px;
+  font-size: 1em;
+  line-height: 33px;
   -webkit-appearance: none;
   -moz-appearance: none;
   -o-appearance: none;
