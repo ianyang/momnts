@@ -1,12 +1,17 @@
-<section class="container">
+<header>
+    <div class="current-page">
+      <h3>Sign Up</h3>
+    </div>
+    <div class="open-popout">
+      <span class="entypo-menu"></span>
+    </div>
+</header>
 
-<div class="sidebar_user">
-  <h1>Sign up</h1>
-</div>
+<%= render :partial => 'partials/topper' %>
 
-<div class="access_user">
+<div class="container">
 
-  <h2>Enter Information</h2>
+  <div class="sessions">
 
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
@@ -41,6 +46,6 @@
 
   <%= render "devise/shared/links" %>
 
-</div>
+  </div>
 
-</section>
+</div>
