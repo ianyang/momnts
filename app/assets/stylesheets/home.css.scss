@@ -96,33 +96,17 @@
 	height: 50px;
 }
 
-.hero .sign-in .form div a {
-	width: 80%;
-  border: none;
-  margin: 0 auto;
-  height: 35px;
-  border-radius: 2px;
-  color: white;
-  display: block;
-  line-height: 35px;
-}
+// .hero .sign-in .form div:nth-child(1) a {
+//   background: rgba(22,160,133,1);
+// }
 
-.hero .sign-in .form div a:link,
-.hero .sign-in .form div a:visited {
-  color: white;
-}
+// .hero .sign-in .form div:nth-child(2) a {
+//   background: rgba(241, 196, 15,1.0);
+// }
 
-.hero .sign-in .form div:nth-child(1) a {
-  background: rgba(22,160,133,1);
-}
-
-.hero .sign-in .form div:nth-child(2) a {
-  background: rgba(241, 196, 15,1.0);
-}
-
-.hero .sign-in .form div:nth-child(3) a {
-  background: rgba(220,220,220,0.2);
-}
+// .hero .sign-in .form div:nth-child(3) a {
+//   background: rgba(220,220,220,0.2);
+// }
 
 .threecol {
 	display: block;

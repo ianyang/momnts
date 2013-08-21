@@ -15,11 +15,11 @@
 
   <h1>Welcome Back</h1>
 
-    <%= button_to "View Events", '/display', :method => :get %> <br>
+    <%= button_to "View Events", '/display', :method => :get, :class => 'btn btn-primary' %> <br>
 
-    <%= button_to "Sign Out", destroy_user_session_path, :method => :delete %> <br>
+    <%= button_to "Sign Out", destroy_user_session_path, :method => :delete, :class => 'btn btn-secondary' %> <br>
 
-    <%= button_to "Cancel Account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+    <%= button_to "Cancel Account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-warning' %>
 
 </div>
 
@@ -62,7 +62,7 @@
     <div><%= f.label :current_password %> <i>(to confirm your changes)</i><br />
     <%= f.password_field :current_password %></div>
 
-    <div><%= f.submit "Update" %></div>
+    <div><%= f.submit "Update", class:'btn btn-primary' %></div>
   <% end %>
 
 

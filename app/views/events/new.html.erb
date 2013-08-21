@@ -71,14 +71,11 @@
         <%= f.hidden_field :location, :readonly => true %>
         <%= f.hidden_field :address, :readonly => true %>
         <%= f.hidden_field :image, :readonly => true %>
-
-        <div class="input-container">
-          <%= f.submit %>
-        </div>
-      <% end %>
     </div>
 
   </div>
+    <%= f.submit class:'btn btn-primary' %>
+    <% end %>
 </div>
 
 <%= render :partial => 'partials/footer' %>
