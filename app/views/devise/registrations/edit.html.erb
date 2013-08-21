@@ -11,61 +11,92 @@
 
 <div class="container">
 
-<div class="sidebar_user">
+  <%= button_to "View Events", '/display', :method => :get, :class => 'btn btn-primary' %>
+  <%= button_to "Sign Out", destroy_user_session_path, :method => :delete, :class => 'btn btn-secondary' %>
+  <%= button_to "Cancel Account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-warning' %>
 
-  <h1>Welcome Back</h1>
+  <div class="user form">
 
-    <%= button_to "View Events", '/display', :method => :get, :class => 'btn btn-primary' %> <br>
+    <h1>Update your information</h1>
 
-    <%= button_to "Sign Out", destroy_user_session_path, :method => :delete, :class => 'btn btn-secondary' %> <br>
-
-    <%= button_to "Cancel Account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-warning' %>
-
-</div>
-
-
-<div class="access_user">
-
-  <h2>Update your information</h2>
-
-  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
     <%= devise_error_messages! %>
 
-    <div><%= f.label :name %><br />
-    <%= f.text_field :name, :autofocus => true %></div>
+    <div class="input-container">
+      <div class="input-name"><h2>Name</h2></div>
+      <div class="input-field">
+        <div class="input"><%= f.text_field :name, :autofocus => true %></div>
+      </div>
+    </div>
 
-    <div><%= f.label :gender %><br />
-    <%= f.select :gender, ['Male','Female'] %></div>
+    <div class="input-container">
+      <div class="input-name"><h2>Gender</h2></div>
+      <div class="input-field">
+        <div class="select"><%= f.select :gender, ['Male','Female'] %></div>
+      </div>
+    </div>
 
-    <div><%= f.label :dob, 'Date of Birth' %><br />
-    <%= f.date_select :dob, :start_year => Date.current.year-15, :end_year => 1920, :order => [:month, :day, :year] %></div>
+    <div class="input-container">
+      <div class="input-name"><h2>Birthday</h2></div>
+      <div class="input-field">
+        <div class="select"><%= f.date_select :dob, :start_year => Date.current.year-15, :end_year => 1920, :order => [:month, :day, :year] %></div>
+      </div>
+    </div>
 
-    <div><%= f.label :profession %><br />
-    <%= f.select :profession, ['Tech','Media','Finance'] %></div>
+    <div class="input-container">
+      <div class="input-name"><h2>Profession</h2></div>
+      <div class="input-field">
+        <div class="select"><%= f.select :profession, ['Tech','Media','Finance'] %></div>
+      </div>
+    </div>
 
-    <div><%= f.label :number, 'Phone' %><br />
-    <%= f.text_field :number %></div>
+    <div class="input-container">
+      <div class="input-name"><h2>Phone</h2></div>
+      <div class="input-field">
+        <div class="input"><%= f.text_field :number %></div>
+      </div>
+    </div>
 
-    <div><%= f.label :email %><br />
-    <%= f.email_field :email, :autofocus => true %></div>
+    <div class="input-container">
+      <div class="input-name"><h2>Email</h2></div>
+      <div class="input-field">
+        <div class="input"><%= f.email_field :email, :autofocus => true %></div>
+      </div>
+    </div>
+  </div>
 
+
+  <div class="user form">
+
+    <h1>Update password (leave empty to keep current)</h1>
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
 
-    <div><%= f.label :password %> <i>(leave blank to keep current one)</i><br />
-    <%= f.password_field :password, :autocomplete => "off" %></div>
+    <div class="input-container">
+      <div class="input-name"><h2>Current Password</h2></div>
+      <div class="input-field">
+        <div class="input"><%= f.password_field :current_password %></div>
+      </div>
+    </div>
 
-    <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %></div>
+    <div class="input-container">
+      <div class="input-name"><h2>New Password</h2></div>
+      <div class="input-field">
+        <div class="input"><%= f.password_field :password, :autocomplete => "off" %></div>
+      </div>
+    </div>
 
-    <div><%= f.label :current_password %> <i>(to confirm your changes)</i><br />
-    <%= f.password_field :current_password %></div>
+    <div class="input-container">
+      <div class="input-name"><h2>Confirm Password</h2></div>
+      <div class="input-field">
+        <div class="input"><%= f.password_field :password_confirmation %></div>
+      </div>
+    </div>
 
-    <div><%= f.submit "Update", class:'btn btn-primary' %></div>
+  </div>
+
+  <%= f.submit "Update", class:'btn btn-primary' %>
   <% end %>
-
-
-</div>
 
 </div>

@@ -9,7 +9,7 @@ $(function() {
       data: {"find": searchFind, "place": searchPlace},
       success: function(data) {
         $.each(data, function(x) {
-          $('.results').append('<div class="venue-container">'
+          $('.results').append('<div class="new-event venue-container">'
             + "<div class='image'><img src='" + data[x]["image_url"] + "' /></div>"
             + "<div class='info'><h3>" + data[x]["name"] + "</h3>"
             + "<p>" + data[x]["location"]["address"] + "</p>"

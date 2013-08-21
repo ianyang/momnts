@@ -1,12 +1,16 @@
-<section class="container">
-
-  <div class="sidebar_user">
-    <h1>Your Event</h1>
-    <%= button_to "Delete Event", @event, :method => :delete, :confirm => 'Are you sure?' %>
-
+<header>
+  <div class="current-page">
+    <h3>Your Event</h3>
   </div>
+  <div class="open-popout">
+    <span class="entypo-menu"></span>
+  </div>
+</header>
 
-  <div class="access_user">
+<%= render :partial => 'partials/topper' %>
+
+<div class="container">
+
     <h2>Your Confirmation</h2>
     <div class="confirm_img"><img src="<%= @event.image %>" /></div><br>
     <div>Created by: <%= @event.creator.name %></div><br>
@@ -23,6 +27,6 @@
         <% end %>
     </span>
 
-  </div>
+    <%= button_to "Delete Event", @event, :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-warning' %>
 
-</section>
+</div>

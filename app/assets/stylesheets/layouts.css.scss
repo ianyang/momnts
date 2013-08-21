@@ -1,14 +1,9 @@
 @import url(http://weloveiconfonts.com/api/?family=entypo);
+@import "clickables";
 
 /* entypo */
 [class*="entypo-"]:before {
   font-family: 'entypo', sans-serif;
-}
-
-@mixin border-radius($radius) {
-  border-radius: $radius;
-  -webkit-border-radius: $radius;
-  -moz-border-radius: $radius;
 }
 
 body, html {
@@ -84,7 +79,7 @@ header .current-page h3 {
   top: 0;
   max-width: 256px;
   margin-left: -90%;
-  background: rgba(20,20,20,0.95);
+  background: $cover;
 }
 
 .popout .logos{
@@ -108,16 +103,15 @@ header .current-page h3 {
   @include border-radius(50%);
   text-align:center;
   font-size: 20px;
-  color: white;
   font-weight: 400;
   display: block;
+  color: white
 }
 
 .popout .text {
   margin-top: 2%;
   width: 100%;
   text-align: center;
-  color: white;
 }
 
 .popout .text h2 {
@@ -133,6 +127,7 @@ header .current-page h3 {
   width: 100%;
   position: absolute;
   bottom: 10%;
+  border-bottom: 1px solid $grey;
 }
 
 .popout .buttons div {
@@ -143,24 +138,9 @@ header .current-page h3 {
   font-weight: 100;
   line-height: 40px;
   font-size: 1.3em;
+  border-top: 1px solid $grey;
 }
 
-.popout .buttons div:nth-child(2n+1) {
-  background: rgba(255,255,255,0.1);
-}
-
-.popout .buttons div:nth-child(2n) {
-  background: rgba(255,255,255,0.05);
-}
-
-.popout .buttons div h3 a {
-  color: white;
-}
-
-.popout .buttons div h3 a:link,
-.popout .buttons div h3 a:visited {
-  color: white;
-}
 
 .alertsdiv {
   padding-top: 50px;

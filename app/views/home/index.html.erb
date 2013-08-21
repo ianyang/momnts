@@ -8,37 +8,50 @@
 
   <div class="sign-in">
     <div class="blurb">
-      <h1>Quick meets to get inspired</h>
+      <% if user_signed_in? %>
+        <h1>Welcome Back</h1>
+        <h1><%= current_user.name %></h1>
+      <% else %>
+        <h1>Quick meets to get inspired</h1>
+      <% end %>
     </div>
 
     <div class="form">
+      <% if user_signed_in? %>
+        <div><%= link_to 'Find Events', '/events', class: 'btn btn-translucent' %></div>
+        <div><%= link_to 'View Account', edit_user_registration_path, class: 'btn btn-translucent' %></div>
+      <% else %>
         <div><%= link_to 'Sign In', new_user_session_path, class: 'btn btn-primary' %></div>
         <div><%= link_to 'Sign Up for Free', '/users/sign_up', class: 'btn btn-secondary' %></div>
         <div><%= link_to 'Just Browsing', '/events', class: 'btn btn-translucent' %></div>
+      <% end %>
     </div>
   </div>
 
 </div>
 
+<% unless user_signed_in? %>
+  <div class="container">
 
-<div class="container">
+    <div class="threecol">
+      <div class="image"><%= image_tag "josh.jpg" %></div>
+      <div class="text"><h2>"I love food. But I love my ladies over food even more! This is the most efficient way of dating, and I can't live without it. Bravo!"</h2></div>
+    </div>
 
+    <div class="threecol">
+      <div class="image"><%= image_tag "donielle.jpg" %></div>
+      <div class="text"><h2>"I'm always so busy at work. Momnts has given me the best man of my life. I love it!"</h2></div>
+    </div>
 
-  <div class="threecol">
-    <div class="image"><%= image_tag "josh.jpg" %></div>
-    <div class="text"><h2>"I love food. But I love my ladies over food even more! This is the most efficient way of dating, and I can't live without it. Bravo!"</h2></div>
+    <div class="threecol">
+      <div class="image"><%= image_tag "justin.jpg" %></div>
+      <div class="text"><h2>"Momnts is super easy to use. It is as slick as my dark blonde hair and everything just works. Perfect."</h2></div>
+    </div>
+
   </div>
 
-  <div class="threecol">
-    <div class="image"><%= image_tag "donielle.jpg" %></div>
-    <div class="text"><h2>"I'm always so busy at work. Momnts has given me the best man of my life. I love it!"</h2></div>
-  </div>
+  <%= render :partial => 'partials/footer' %>
 
-  <div class="threecol">
-    <div class="image"><%= image_tag "justin.jpg" %></div>
-    <div class="text"><h2>"Momnts is super easy to use. It is as slick as my dark blonde hair and everything just works. Perfect."</h2></div>
-  </div>
+<% end %>
 
-</div>
 
-<%= render :partial => 'partials/footer' %>
