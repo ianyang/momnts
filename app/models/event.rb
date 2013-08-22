@@ -10,9 +10,9 @@ class Event < ActiveRecord::Base
 
   validates_presence_of :date, :time, :duration, :topic, :creator_identifier, :location, :address
 
-  def self.search(duration, date, currentid)
-    if duration && date && currentid
-      where("duration <= #{duration} AND date = '#{date}' AND creator_id != #{currentid}")
+  def self.search(duration, date)
+    if duration && date
+      where("duration <= #{duration} AND date = '#{date}'")
     else
       scoped
     end

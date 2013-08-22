@@ -12,8 +12,8 @@ $(function() {
           $('.results').append('<div class="new-event venue-container">'
             + "<div class='image'><img src='" + data[x]["image_url"] + "' /></div>"
             + "<div class='info'><h3>" + data[x]["name"] + "</h3>"
-            + "<p>" + data[x]["location"]["address"] + "</p>"
-            + "<p>" + data[x]["location"]["neighborhoods"] + "</p></div>"
+            + "<p class='address'>" + data[x]["location"]["address"] + "</p>"
+            + "<p class='neighborhood'>" + data[x]["location"]["neighborhoods"] + "</p></div>"
             + '</div>');
         });
         $('.loading').css('display','none');
@@ -52,9 +52,9 @@ $(function() {
     $('.results').css('text-align','center');
     $('.venue-container').css('margin-left','25%');
 
-    $('#event_address').val($('.results-element p').text());
-    $('#event_location').val($('.results-element h3').text());
-    $('#event_image').val($('.results-element img')[0].src);
+    $('#event_address').val($('.address').text()+', '+$('.neighborhood').text());
+    $('#event_location').val($('.info h3').text());
+    $('#event_image').val($('.image img')[0].src);
   };
 
   $('body').on('click', '.venue-container', choose);

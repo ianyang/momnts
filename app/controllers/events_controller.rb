@@ -3,47 +3,35 @@ class EventsController < ApplicationController
   include EventsHelper
 
   def index
-    # @params = params
-
-    # if params[:date] != nil
-
-    #   @year = params[:date]["(1i)"]
-
-    #   @month = params[:date]["(2i)"].to_i
-    #     if @month < 10
-    #       @month = '0'+@month.to_s
-    #     else
-    #       @month.to_s
-    #     end
-    #   @day = params[:date]["(3i)"].to_i
-    #     if @day < 10
-    #       @day = '0'+@day.to_s
-    #     else
-    #       @day.to_s
-    #     end
-    #   @setdate = "#{@year}-#{@month}-#{@day}"
-
-    # else
-
-    #   @setdate = nil
-
-    # end
-
-    # @duration = params[:duration]
-
-    # @currentid = current_user.id
-
     delete_events
-
-    @events = Event.search(@duration, @setdate, @currentid)
-
-    @event = Event.new(params[:event])
-
   end
 
   def all_events
-    @events = Event.all
 
+    @location = "location"
+
+    if params[:date] != nil
+      @year = params[:date]["(1i)"]
+      @month = params[:date]["(2i)"].to_i
+        if @month < 10
+          @month = '0'+@month.to_s
+        else
+          @month.to_s
+        end
+      @day = params[:date]["(3i)"].to_i
+        if @day < 10
+          @day = '0'+@day.to_s
+        else
+          @day.to_s
+        end
+      @setdate = "#{@year}-#{@month}-#{@day}"
+    else
+      @setdate = nil
+    end
+
+    @duration = "90"
+
+    @events = Event.search(@duration, @setdate)
     render :json => @events
   end
 
@@ -98,6 +86,10 @@ class EventsController < ApplicationController
   def show
 
     @event = Event.find(params[:id])
+
+  end
+
+  def update
 
   end
 

@@ -1,36 +1,16 @@
+$(function(){
 "use strict";
 
-// visuals
+  $(function(initializeMap) {
 
-$('#events-sidebar .buttons button:nth-child(1)').click(function(event){
-  event.preventDefault();
-  $('#find').fadeIn();
-  $('#create').css('display', 'none');
-  $(this).css({'background':'rgba(250,250,250,0.7)', 'color':'rgba(60,60,60,1)'});
-  $('#events-sidebar .buttons button:nth-child(2)').css('background','rgba(250,250,250,0)')
-})
-
-$('#events-sidebar .buttons button:nth-child(2)').click(function(event){
-  event.preventDefault();
-  $('#find').css('display','none');
-  $('#create').fadeIn();
-  $(this).css({'background':'rgba(250,250,250,0.7)', 'color':'rgba(60,60,60,1)'});
-  $('#events-sidebar .buttons button:nth-child(1)').css('background','rgba(250,250,250,0)')
-})
+    var map = L.mapbox.map('map', 'ianyang.map-6tabzcd8').setView([37.7750,-122.4183],10);
+    map.locate({setView:true, maxZoom:14});
+    map.dragging.disable();
 
 
-//mapbox
-
-$(function(initializeMap) {
-
-  var map = L.mapbox.map('map', 'ianyang.map-6tabzcd8').setView([37.7750,-122.4183],10);
-  map.locate({setView:true, maxZoom:14});
-  map.dragging.disable();
-
-
+  });
 
 });
-
 
 
 
