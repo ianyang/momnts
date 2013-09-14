@@ -1,82 +1,68 @@
-<header>
-  <div class="current-page">
-    <h3>Create Event</h3>
-  </div>
-  <div class="open-popout">
-    <span class="entypo-menu"></span>
-  </div>
-</header>
-
-<%= render :partial => 'partials/topper' %>
-
 <div class="container">
 
-  <div class="new-event">
-    <div class="new-event venue">
-
-      <button class="new-event search-icon"><span class="entypo-search"></span></button>
-      <span>
-        <%= form_tag(controller: 'events', action: 'search', method: "") do %>
-          <%= text_field_tag(:find , nil, placeholder: 'something near you e.g. coffee') %>
-          <%= hidden_field_tag 'place', 'San Francisco' %>
-          <div class='hidden'><%= submit_tag 'Find' %></div>
-        <% end %>
-      </span>
-    </div>
-
-    <div class="new-event loading">
-      <%= image_tag("loading.gif") %>
-    </div>
-
-    <div class="new-event results">
-    </div>
-
-    <div class="new-event form">
-      <%= form_for @event do |f| %>
-
-        <div class="input-container input-top">
-          <div class="input-name"><h2>Date</h2></div>
-          <div class="input-field">
-            <div class="select"><%= f.date_select :date, :start_year => Date.current.year, :end_year => 2014, :order => [:month, :day, :year] %></div>
-          </div>
-        </div>
-
-        <div class="input-container">
-          <div class="input-name"><h2>Time</h2></div>
-          <div class="input-field">
-            <div class="select"><%= f.time_select :time, {minute_step: 15, ampm: true} %></div>
-          </div>
-        </div>
-
-        <div class="input-container">
-          <div class="input-name"><h2>Duration</h2></div>
-          <div class="input-field">
-            <div class="select"><%= f.select :duration, [15,30,45,60,75,90,"Get a life!"] %>mins</div>
-          </div>
-        </div>
-
-        <div class="input-container">
-          <div class="input-name"><h2>Topic</h2></div>
-          <div class="input-field">
-            <div class="input"><%= f.text_field :topic, :placeholder => "what you want to talk about" %></div>
-          </div>
-        </div>
-
-        <div class="input-container">
-          <div class="input-name"><h2>Short Bio</h2></div>
-          <div class="input-field">
-            <div class="input"><%= f.text_field :creator_identifier, :placeholder => "what you look like" %></div>
-          </div>
-        </div>
-
-        <%= f.hidden_field :location, :readonly => true %>
-        <%= f.hidden_field :address, :readonly => true %>
-        <%= f.hidden_field :image, :readonly => true %>
-    </div>
-
-  </div>
-    <%= f.submit class:'btn btn-primary' %>
+  <div class="create search-bar">
+    <%= form_tag(controller: 'events', action: 'search', method: "") do %>
+      <%= text_field_tag(:find , nil, placeholder: 'something near you e.g. coffee') %>
+      <%= hidden_field_tag 'place', 'San Francisco' %>
+      <div class='hidden'><%= submit_tag 'Find' %></div>
     <% end %>
+    <span class="entypo-search"></span>
+  </div>
+
+  <div class="create loading">
+    <%= image_tag("loading.gif") %>
+  </div>
+
+  <div class="create results">
+  </div>
+
+  <div class="create form">
+    <%= form_for @event do |f| %>
+
+      <div class="input-container input-top">
+        <div class="input-name"><h2>Date</h2></div>
+        <div class="input-field">
+          <div class="select"><%= f.date_select :date, :start_year => Date.current.year, :end_year => 2014, :order => [:month, :day, :year] %></div>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <div class="input-name"><h2>Time</h2></div>
+        <div class="input-field">
+          <div class="select"><%= f.time_select :time, {minute_step: 15, ampm: true} %></div>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <div class="input-name"><h2>Duration</h2></div>
+        <div class="input-field">
+          <div class="select"><%= f.select :duration, [15,30,45,60,75,90,"Get a life!"] %>mins</div>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <div class="input-name"><h2>Topic</h2></div>
+        <div class="input-field">
+          <div class="input"><%= f.text_field :topic, :placeholder => "what you want to talk about" %></div>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <div class="input-name"><h2>Short Bio</h2></div>
+        <div class="input-field">
+          <div class="input"><%= f.text_field :creator_identifier, :placeholder => "what you look like" %></div>
+        </div>
+      </div>
+
+      <%= f.hidden_field :location, :readonly => true %>
+      <%= f.hidden_field :address, :readonly => true %>
+      <%= f.hidden_field :image, :readonly => true %>
+
+      <%= f.submit class:'btn btn-primary' %>
+      <% end %>
+  </div>
+
 </div>
 
+<%= render :partial => 'partials/nav' %>
 <%= javascript_include_tag 'venue.js' %>

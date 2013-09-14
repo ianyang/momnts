@@ -1,0 +1,32 @@
+@import "clickables";
+
+.event.search-bar {
+  width: 100%;
+  margin: 10px auto;
+  text-align: center;
+  overflow: hidden;
+  height: 35px;
+  background: $green;
+  @include border-radius(3px);
+  & button {
+    width: 50%;
+    float: left;
+    margin: 0;
+    @include no-appearance();
+    @include real-width();
+    border: none;
+    height: 35px;
+    color: darken($green, 10%);
+    font-size: 1.4em;
+  }
+  & .active {
+    background: lighten($green, 10%);
+    color: white;
+  }
+}
+
+#map {
+  width: 100%;
+  height: 80px;
+}
+

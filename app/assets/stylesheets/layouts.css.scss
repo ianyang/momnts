@@ -10,170 +10,76 @@ body, html {
   height: 100%;
   width: 100%;
   min-width: 320px;
-  background-color: rgba(255,255,255,1);
+  max-width: 768px;
+  background-color: rgba(250,250,250,1);
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   color: rgba(60,60,60,1);
   position: relative;
   font-size: 12px;
-  max-width: 768px;
-}
-
-header {
-  height: 49px;
-  background-color: rgba(240,240,240,1);
-  width: 100%;
-  display: block;
-  position: fixed;
-  left: 0;
-  top: 0;
-  border-bottom: 1px solid rgba(180,180,180,1);
-  min-width: 320px;
-  max-width: 768px;
-  z-index: 999;
-}
-
-header .open-popout {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 40px;
-  height: 100%;
-  font-size: 28px;
-  padding: 0 5px 0 5px;
-  text-align: center;
-  line-height: 49px;
-  color: rgba(120,120,110,1);
-}
-
-header .open-popout:hover {
-  color: rgba(180,180,180,1);
-}
-
-header .current-page {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  height: 100%;
-  padding: 0 10px 0 10px;
-  text-align: center;
-  line-height: 49px;
-  border-left: 1px solid rgba(180,180,180,1);
-}
-
-header .current-page h3 {
-  font-weight: 500;
-  font-size: 1.3em;
-}
-
-/*popout*/
-
-.popout {
-  z-index: 99999999;
-  position: fixed;
-  width: 90%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  max-width: 256px;
-  margin-left: -90%;
-  background: $cover;
-  border-right: 1px solid $grey;
-}
-
-.popout .logos{
-  width: 100%;
-  height: 30%;
-  display: block;
-  padding-top: 20%;
-}
-
-.popout .logo {
-  margin: 0 auto;
   overflow: hidden;
-  width: 50px;
+}
+
+.container {
+  margin: 0 auto;
+  width: 95%;
+  overflow: scroll;
+  height: -webkit-calc(100% - 50px);
+  height: calc(100% - 50px);
   position: relative;
+  background: rgba(250,250,250,1);
 }
 
-.popout .logo .sign {
-  width:50px;
-  height:50px;
-  background: rgba(241, 196, 15,1.0);
-  @include border-radius(50%);
-  text-align:center;
-  font-size: 20px;
-  font-weight: 400;
-  display: block;
-  color: white
-}
-
-.popout .text {
-  margin-top: 2%;
+// navbar
+.nav {
+  position: relative;
   width: 100%;
-  text-align: center;
+  height: 50px;
+  background: $yellow;
+  & a {
+    width: 25%;
+    height: 50px;
+    float: left;
+    text-align: center;
+    line-height: 50px;
+    color: darken($yellow, 20%);
+    font-size: 2em;
+    position: relative;
+  }
+  & a:link {
+    color: darken($yellow, 20%);
+  }
+  & a:visited {
+    color: darken($yellow, 20%);
+  }
 }
 
-.popout .text h2 {
-  display: inline;
-  font-size: 1.5em;
-}
-
-.popout .text h2:nth-child(1) {
-  font-weight: 400;
-}
-
-.popout .buttons {
-  width: 100%;
+.divider {
   position: absolute;
-  bottom: 10%;
-  border-bottom: 1px solid $grey;
+  width: 1px;
+  height: 80%;
+  right: 0;
+  background: darken($yellow, 5%);
+  top: 10%;
 }
-
-.popout .buttons div {
-  display: block;
-  height: 40px;
-  width: 100%;
-  text-align: center;
-  font-weight: 100;
-  line-height: 40px;
-  font-size: 1.3em;
-  border-top: 1px solid $grey;
-}
-
 
 .alertsdiv {
-  padding-top: 50px;
+  position: fixed;
+  width: 80%;
+  max-width: 768px;
+  height: 240px;
+  display: none;
 }
+
 .alerts {
   background-color: rgba(22,160,133,1);
   text-align: center;
   color: white;
 }
 
-.container {
-  margin: 0;
-  width: 100%;
-  overflow:hidden; /* this is the easiest way to clear floats... but it's not right for every situation */
-  background: rgba(252,252,252,1);
-  min-height: 100%;
-}
-
-footer {
-  width: 100%;
-  height: 29px;
-  border-top: 1px solid rgba(180,180,180,1);
-  text-align: center;
-  background-color: rgba(240,240,240,1);
-  line-height: 29px;
-  font-size: 0.8em;
-}
-
-
 a:link, a:visited {
   color: rgba(60,60,60,1);
-  text-decoration:none;
+  text-decoration: none;
 }
 
 h1, h2, h3 {

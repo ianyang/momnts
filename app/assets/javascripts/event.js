@@ -1,12 +1,43 @@
 $(function(){
-"use strict";
+  "use strict";
 
   $(function(initializeMap) {
 
     var map = L.mapbox.map('map', 'ianyang.map-6tabzcd8').setView([37.7750,-122.4183],10);
+
+    map.addLayer(L.mapbox.tileLayer('ianyang.map-6tabzcd8', {
+      detectRetina: true,
+      retinaVersion: 'ianyang.map-6tabzcd8'
+    }));
+
     map.locate({setView:true, maxZoom:14});
     map.dragging.disable();
 
+    if (!navigator.geolocation) {
+      alert('geolocation is not available');
+    } else {
+      map.locate();
+    }
+
+    map.on('locationfound', function(e) {
+      map.fitBounds(e.bounds);
+
+      map.markerLayer.setGeoJSON({
+        type: "Feature",
+        geometry: {
+          type: "Point",
+          coordinates: [e.latlng.lng, e.latlng.lat]
+        },
+        properties: {
+          'marker-color': '#000',
+          'marker-symbol': 'star-stroked'
+        }
+      });
+    });
+
+    map.on('locationerror', function() {
+      alert('position could not be found');
+    });
 
   });
 
@@ -48,104 +79,6 @@ $(function(){
 
 
 
-// Gmaps
-
-
-// google.maps.visualRefresh = true;
-// var map;
-// var initialLocation;
-// var browserSupportFlag =  new Boolean();
-// var sf = new google.maps.LatLng(37.7750, -122.4183);
-// var infowindow;
-// var marker;
-
-// function initialize() {
-//   var myOptions = {
-//     zoom: 13,
-//     mapTypeControl: false,
-//     panControl: false,
-//     zoomControl: true,
-//     zoomControlOptions: {
-//       style: google.maps.ZoomControlStyle.SMALL,
-//       position: google.maps.ControlPosition.LEFT_BOTTOM
-//     },
-//     mapTypeId: google.maps.MapTypeId.ROADMAP
-//   };
-//   var map = new google.maps.Map(document.getElementById("map"), myOptions);
-
-//   // Try W3C Geolocation (Preferred)
-//   if(navigator.geolocation) {
-//     browserSupportFlag = true;
-//     navigator.geolocation.getCurrentPosition(function(position) {
-//       initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-//       map.setCenter(initialLocation);
-//     }, function() {
-//       handleNoGeolocation(browserSupportFlag);
-//     });
-//   }
-//   // Browser doesn't support Geolocation
-//   else {
-//     browserSupportFlag = false;
-//     handleNoGeolocation(browserSupportFlag);
-//   }
-
-//   function handleNoGeolocation(errorFlag) {
-//     if (errorFlag == true) {
-//       alert("Geolocation service failed.");
-//       initialLocation = sf;
-//     } else {
-//       alert("Your browser doesn't support geolocation. We've placed you in San Francisco.");
-//       initialLocation = sf;
-//     }
-//     map.setCenter(initialLocation);
-//   }
-
-//     var myLatlng = new google.maps.LatLng(37.7750,-122.4183);
-
-//     var marker = new google.maps.Marker({
-//         position: myLatlng,
-//         map: map,
-//         title: 'Hello World!',
-//         animation: google.maps.Animation.DROP
-//     });
-
-// }
-
-// function createMarker(lat,lon) {
-
-//   var placeLoc = new google.maps.LatLng(lat,lon);
-
-//   var marker = new google.maps.Marker({
-//       position: placeLoc,
-//       map: map,
-//       title: 'Hello World!',
-//       animation: google.maps.Animation.DROP
-//   });
-
-//   // infowindow = new google.maps.InfoWindow(
-//   //   { content: topic,
-//   //   });
-
-//   // google.maps.event.addListener(marker, 'click', function() {
-//   //   infowindow.open(map, this);
-//   // });
-// }
-
-// google.maps.event.addDomListener(window, 'load', initialize);
-
-// function choose(event) {
-//   event.preventDefault();
-
-//   var $this = $(this);
-//   $('.show_events').empty();
-//   $('.show_events').append($this);
-
-//   $($this).css('border','5px solid rgba(22,160,133,1)');
-
-//   var id = "events/"+$($('.show_events .hidden .eventid')).text();
-//   $('.show_attend form').attr("action", id);
-
-// }
 
 // $('body').on('click', '.event', choose);
 
