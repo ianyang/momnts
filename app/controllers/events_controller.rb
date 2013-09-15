@@ -44,6 +44,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @city = city_checker
   end
 
   def search
@@ -59,7 +60,7 @@ class EventsController < ApplicationController
     api_host = 'api.yelp.com'
     consumer = OAuth::Consumer.new(consumer_key, consumer_secret, {:site => "http://#{api_host}"})
     access_token = OAuth::AccessToken.new(consumer, token, token_secret)
-    path = "/v2/search?term=#{URI.escape(@find)}&location=#{URI.escape(@place)}"
+    path = "/v2/search?term=#{URI.escape(@find)}&ll=#{URI.escape(@place)}"
     @raw = access_token.get(path).body
     @results = JSON.load(@raw)["businesses"]
     render :json => @results
@@ -69,18 +70,19 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
     @event.creator_id = current_user.id
-    @event.save
 
-    #Twilio
+    if @event.save
+      @client = Twilio::REST::Client.new TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN
+      message = @client.account.sms.messages.create(:body => "One event added online by #{@event.creator.name}. Just to let you know.",
+          :to => "+14156466565",     # Replace with your phone number
+          :from => "+16503519558")   # Replace with your Twilio number
+      puts message.sid
+      render :show
+    else
+      flash[:error] = "You need to fill in all the details"
+      redirect_to 'events/new'
+    end
 
-    @client = Twilio::REST::Client.new TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN
-
-    message = @client.account.sms.messages.create(:body => "One event added online by #{@event.creator.name}. Just to let you know.",
-        :to => "+14156466565",     # Replace with your phone number
-        :from => "+16503519558")   # Replace with your Twilio number
-    puts message.sid
-
-    render :show
   end
 
   def show

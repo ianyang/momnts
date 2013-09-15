@@ -1,6 +1,7 @@
 module EventsHelper
 
   def city_checker
+  # based on IP. Does not work on localhost
     if request.location.city == ""
       "San Francisco"
     else

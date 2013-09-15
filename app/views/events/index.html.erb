@@ -12,5 +12,11 @@
 
 </div>
 
-<%= render :partial => 'partials/nav' %>
+<div class="nav">
+  <a href="/events" class="current"><span class="entypo-search"></span></a>
+  <a href="/events/new"><span class="entypo-plus"></span><div class="divider"></div></a>
+  <a href="/users/edit"><span class="entypo-user"></span><div class="divider"></div></a>
+  <a href="http://www.ianyang.co"><span class="entypo-info"></a>
+</div>
+
 <%= javascript_include_tag 'event.js' %>

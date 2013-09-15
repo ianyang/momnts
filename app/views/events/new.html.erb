@@ -1,12 +1,25 @@
 <div class="container">
 
-  <div class="create search-bar">
-    <%= form_tag(controller: 'events', action: 'search', method: "") do %>
-      <%= text_field_tag(:find , nil, placeholder: 'something near you e.g. coffee') %>
-      <%= hidden_field_tag 'place', 'San Francisco' %>
-      <div class='hidden'><%= submit_tag 'Find' %></div>
-    <% end %>
-    <span class="entypo-search"></span>
+  <div class="create search-container">
+    <div class="info-container">
+      <div class="logo-container">
+        <div class="logo">
+          <%= image_tag 'logo.png' %>
+        </div>
+        <div class='divider'></div>
+      </div>
+      <div class="info">
+        <h1><%= Time.now.strftime("%A") %></h1>
+        <h3><%= @city %></h3>
+      </div>
+    </div>
+    <div class="search-bar">
+      <%= form_tag(controller: 'events', action: 'search', method: "") do %>
+        <%= text_field_tag(:find , nil, placeholder: 'something near you e.g. coffee') %>
+        <div class='hidden'><%= submit_tag 'Find' %></div>
+      <% end %>
+      <span class="entypo-search"></span>
+    </div>
   </div>
 
   <div class="create loading">
@@ -16,53 +29,61 @@
   <div class="create results">
   </div>
 
-  <div class="create form">
+  <div class="create confirm">
     <%= form_for @event do |f| %>
 
-      <div class="input-container input-top">
-        <div class="input-name"><h2>Date</h2></div>
-        <div class="input-field">
-          <div class="select"><%= f.date_select :date, :start_year => Date.current.year, :end_year => 2014, :order => [:month, :day, :year] %></div>
+    <div class="form">
+      <div class="input">
+        <div class="input-minor">Date</div>
+        <div class="input-major">
+          <%= f.date_select :date, :start_year => Date.current.year, :end_year => 2014, :order => [:month, :day, :year] %>
         </div>
       </div>
 
-      <div class="input-container">
-        <div class="input-name"><h2>Time</h2></div>
-        <div class="input-field">
-          <div class="select"><%= f.time_select :time, {minute_step: 15, ampm: true} %></div>
+      <div class="input">
+        <div class="input-minor">Time</div>
+        <div class="input-major">
+          <%= f.time_select :time, {minute_step: 15, ampm: true} %>
         </div>
       </div>
 
-      <div class="input-container">
-        <div class="input-name"><h2>Duration</h2></div>
-        <div class="input-field">
-          <div class="select"><%= f.select :duration, [15,30,45,60,75,90,"Get a life!"] %>mins</div>
+      <div class="input">
+        <div class="input-minor">Duration</div>
+        <div class="input-major">
+          <%= f.select :duration, [15,30,45,60,75,90,"Get a life!"] %>mins
         </div>
       </div>
 
-      <div class="input-container">
-        <div class="input-name"><h2>Topic</h2></div>
-        <div class="input-field">
-          <div class="input"><%= f.text_field :topic, :placeholder => "what you want to talk about" %></div>
+      <div class="input">
+        <div class="input-minor">Topic</div>
+        <div class="input-major">
+          <%= f.text_field :topic, :placeholder => "what you want to talk about" %>
         </div>
       </div>
 
-      <div class="input-container">
-        <div class="input-name"><h2>Short Bio</h2></div>
-        <div class="input-field">
-          <div class="input"><%= f.text_field :creator_identifier, :placeholder => "what you look like" %></div>
+      <div class="input">
+        <div class="input-minor">Short Bio</div>
+        <div class="input-major">
+          <%= f.text_field :creator_identifier, :placeholder => "what you look like" %>
         </div>
       </div>
 
-      <%= f.hidden_field :location, :readonly => true %>
-      <%= f.hidden_field :address, :readonly => true %>
-      <%= f.hidden_field :image, :readonly => true %>
+    </div>
 
-      <%= f.submit class:'btn btn-primary' %>
-      <% end %>
+    <%= f.hidden_field :location, :readonly => true %>
+    <%= f.hidden_field :address, :readonly => true %>
+    <%= f.hidden_field :image, :readonly => true %>
+    <%= f.submit class:'btn btn-secondary' %>
+    <% end %>
   </div>
 
 </div>
 
-<%= render :partial => 'partials/nav' %>
-<%= javascript_include_tag 'venue.js' %>
+<div class="nav">
+  <a href="/events"><span class="entypo-search"></span></a>
+  <a href="/events/new" class="current"><span class="entypo-plus"></span></a>
+  <a href="/users/edit"><span class="entypo-user"></span><div class="divider"></div></a>
+  <a href="http://www.ianyang.co"><span class="entypo-info"></a>
+</div>
+
+<%= javascript_include_tag 'create.js' %>
