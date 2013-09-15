@@ -2,17 +2,13 @@
 
 // signin
 
-.signin-container {
-  width: 100%;
-  height: 100%;
+.signin.container {
   background-image: url(/assets/background1.jpg);
   background-size: cover;
-  margin: 0px auto;
-  display: block;
   position: relative;
 }
 
-.signin-container .header {
+.signin.container .header {
   width: 80%;
   height: 80px;
   padding-top: 30px;
@@ -51,81 +47,45 @@
   }
 }
 
-.signin-container .form {
+.signin.container .form {
   margin: 10px auto;
   position: relative;
+  & input {
+    text-align: left;
+  }
 }
 
-.signin-container .btn {
+.signin.container .btn {
   width: 80%;
 }
 
-.signin-container .forgot {
-  display: block;
-  margin: 5px auto;
-  text-align: center;
-  color: white;
-  font-size: 1.2em;
+// users form
+
+.user.container {
+  background-image: url(/assets/background1.jpg);
+  background-size: cover;
+  position: relative;
 }
 
-// 
-.user.nav-container {
-  width: 100%;
-  height: 50px;
-  background: $yellow;
+.user.container .form {
+  width: 95%;
+  &.password {
+    & .input {
+      display: none;
+    }
+  }
+}
+
+.user.container .nav-container {
+  width: 95%;
+  margin: 0 auto;
   overflow: hidden;
-  & div {
-    width: 50%;
-    height: 100%;
+  & .btn {
+    width: 49%;
     float: left;
-  }
-  & div button, div input[type=submit] {
-    border: none;
-    background: none;
-    line-height: 50px;
-    text-align: center;
-    margin: 0 auto;
-  }
-}
-
-.user {
-  &.form {
-    width: -webkit-calc(100% - 55px);
-    overflow: hidden;
-    text-align: center;
-    @include border-radius(2px);
-    float: left;
-  }
-  &.form h1 {
-    margin: 5px;
-    font-size: 1.3em;
-  }
-  &.form .input-container {
-    width: 100%;
-    height: 60px;
-    border-top: 1px dotted rgba(200,200,200,1);
-  }
-  &.form .input-name {
-    width: 30%;
-    height: 100%;
-    float: left;
-    background: rgba(240,240,240,1);
-  }
-  &.form .input-container .input-name h2 {
-    line-height: 60px;
-  }
-  &.form .input-container .input-field {
-    width: 70%;
-    height: 100%;
-    overflow: hidden;
     margin: 0;
-    text-align: center;
   }
-  &.form .input-container .input-field .select {
-    display: inline-block;
-    margin-top: 12px;
-  }
-  &.form .input-container .input-field .input {
-    margin-top: 14px;
+  & .btn-warning {
+    margin-left: 2%;
   }
 }

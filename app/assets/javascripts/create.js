@@ -42,6 +42,7 @@ $(function() {
   });
 
   function yelp() {
+    $('.confirm').css('display','none');
     $.ajax({
       url: "/search",
       method: "get",
@@ -74,6 +75,12 @@ $(function() {
     yelp();
   });
 
+
+  // venue search
+  $('#find').focus(function(){
+    $(this).val('');
+  });
+
   $('.search-bar form').submit(function(){
     event.preventDefault();
 
@@ -89,9 +96,6 @@ $(function() {
 
   });
 
-  $('#find').focus(function(){
-    $(this).val('');
-  });
 
   $('#find').change(function(event) {
     event.preventDefault();
@@ -120,7 +124,7 @@ $(function() {
     $('#event_location').val($('.heading').text());
     $('#event_image').val($('.image img')[0].src);
 
-    $('.create.confirm').fadeIn();
+    $('.confirm').fadeIn();
   }
 
   $('body').on('click', '.venue', choose);

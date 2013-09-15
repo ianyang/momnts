@@ -35,13 +35,14 @@
     text-align: center;
     & h1 {
       padding-top: 30px;
-      font-size: 2.4em;
+      font-size: 2.5em;
       margin: 0;
+      text-shadow: 0 1px 10px $translucent;
     }
     & h3 {
       font-size: 1.4em;
       margin: 0;
-      font-weight: 300;
+      text-shadow: 0 1px 10px $translucent;
     }
   }
 }
@@ -58,21 +59,23 @@
 
 .today-container, .tomorrow-container {
   margin: 10px auto;
-  width: 100%;
+  width: 95%;
   min-height: 240px;
   overflow: hidden;
   display: none;
   & .heading {
-    width: 30%;
-    height: 30px;
+    width: -webkit-calc(100% - 2px);
+    height: 35px;
+    margin: 0 auto;
     background: $blue;
     text-align: center;
-    line-height: 30px;
-    border-bottom: 2px solid darken($blue, 10%);
+    line-height: 35px;
+    border: 1px solid white;
     color: white;
-    font-size: 1.2em;
+    font-size: 1.4em;
+    font-weight: 400;
     margin-bottom: 5px;
-    box-shadow: 0 1px 1px $grey;
+    box-shadow: 0 0 1px $grey;
   }
 }
 

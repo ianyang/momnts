@@ -1,6 +1,6 @@
-<div class="container">
+<div class="create container">
 
-  <div class="create search-container">
+  <div class="search-container">
     <div id="map"></div>
     <div class="search-bar">
       <%= form_tag(controller: 'events', action: 'search', method: "") do %>
@@ -10,14 +10,14 @@
     </div>
   </div>
 
-  <div class="create loading">
+  <div class="loading">
     <%= image_tag("loading.gif") %>
   </div>
 
-  <div class="create results">
+  <div class="results">
   </div>
 
-  <div class="create confirm">
+  <div class="confirm">
     <%= form_for @event do |f| %>
 
     <div class="form">

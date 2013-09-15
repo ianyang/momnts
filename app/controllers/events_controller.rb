@@ -60,7 +60,7 @@ class EventsController < ApplicationController
       render :show
     else
       flash[:error] = "You need to fill in all the details"
-      redirect_to 'events/new'
+      redirect_to('/events/new')
     end
 
   end
