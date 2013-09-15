@@ -29,7 +29,7 @@ $(function() {
           coordinates: [e.latlng.lng, e.latlng.lat]
         },
         properties: {
-          'marker-color': '#000',
+          'marker-color': '#f1c40f',
           'marker-symbol': 'star-stroked'
         }
       });
@@ -113,6 +113,7 @@ $(function() {
     $('.results').hide();
     $('.results').empty();
     $('.results').append($this);
+    $this.css('border','1px solid #f1c40f');
     $('.results').fadeIn();
 
     $('#event_address').val($('.address').text()+', '+$('.city').text()+', '+$('.postcode').text());
@@ -120,7 +121,7 @@ $(function() {
     $('#event_image').val($('.image img')[0].src);
 
     $('.create.confirm').fadeIn();
-  };
+  }
 
   $('body').on('click', '.venue', choose);
 
