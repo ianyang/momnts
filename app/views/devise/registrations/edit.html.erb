@@ -1,5 +1,10 @@
 <div class="container">
 
+  <div class="user nav-container">
+    <div><%= button_to "Events", '/display', :method => :get %></div>
+    <div><%= button_to "Sign Out", destroy_user_session_path, :method => :delete %></div>
+  </div>
+
   <div class="user form">
 
     <h1>Update your information</h1>
@@ -83,10 +88,6 @@
 
   <%= f.submit "Update", class:'btn btn-primary' %>
   <% end %>
-
-  <%= button_to "View Events", '/display', :method => :get, :class => 'btn btn-primary' %>
-  <%= button_to "Sign Out", destroy_user_session_path, :method => :delete, :class => 'btn btn-secondary' %>
-  <%= button_to "Cancel Account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-warning' %>
 
 </div>
 

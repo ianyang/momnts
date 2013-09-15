@@ -1,13 +1,100 @@
 @import "clickables";
 
+// signin
+
+.signin-container {
+  width: 100%;
+  height: 100%;
+  background-image: url(/assets/background1.jpg);
+  background-size: cover;
+  margin: 0px auto;
+  display: block;
+  position: relative;
+}
+
+.signin-container .header {
+  width: 80%;
+  height: 80px;
+  padding-top: 30px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  & .logo-container {
+    width: 100px;
+    height: 100%;
+    float: left;
+    & .logo {
+      width: 60px;
+      height: 60px;
+      overflow: hidden;
+      & img {
+        width: 100%;
+      }
+    }
+  }
+  & .text {
+    width: -webkit-calc(100% - 100px);
+    height: 100%;
+    float: left;
+    text-align: center;
+    & h1 {
+      float: left;
+      height: 60px;
+      line-height: 60px;
+      margin: 0 0 0 5px;
+      color: white;
+      font-weight: 400;
+    }
+    & h1:nth-child(2) {
+      font-weight: 200;
+    }
+  }
+}
+
+.signin-container .form {
+  margin: 10px auto;
+  position: relative;
+}
+
+.signin-container .btn {
+  width: 80%;
+}
+
+.signin-container .forgot {
+  display: block;
+  margin: 5px auto;
+  text-align: center;
+  color: white;
+  font-size: 1.2em;
+}
+
+// 
+.user.nav-container {
+  width: 100%;
+  height: 50px;
+  background: $yellow;
+  overflow: hidden;
+  & div {
+    width: 50%;
+    height: 100%;
+    float: left;
+  }
+  & div button, div input[type=submit] {
+    border: none;
+    background: none;
+    line-height: 50px;
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+
 .user {
   &.form {
-    width: 90%;
+    width: -webkit-calc(100% - 55px);
     overflow: hidden;
-    margin: 2% auto 2% auto;
-    border: 1px solid $grey;
     text-align: center;
     @include border-radius(2px);
+    float: left;
   }
   &.form h1 {
     margin: 5px;
