@@ -46,11 +46,22 @@
   }
 }
 
+.event.loading {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    display: block;
+  & img {
+    width: 100%;
+  }
+}
+
 .today-container, .tomorrow-container {
   margin: 10px auto;
   width: 100%;
   min-height: 240px;
   overflow: hidden;
+  display: none;
   & .heading {
     width: 30%;
     height: 30px;

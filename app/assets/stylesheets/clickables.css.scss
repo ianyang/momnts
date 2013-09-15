@@ -199,15 +199,15 @@ select {
 }
 
 ::-webkit-input-placeholder { /* WebKit browsers */
-    color:    lighten($charcoal, 20%);
+    color:    $grey;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    lighten($charcoal, 20%);
+    color:    $grey;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:    lighten($charcoal, 20%);
+    color:    $grey;
 }
 :-ms-input-placeholder { /* Internet Explorer 10+ */
-    color:    lighten($charcoal, 20%);
+    color:    $grey;
 }
 
