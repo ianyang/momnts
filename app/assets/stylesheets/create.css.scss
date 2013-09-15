@@ -6,7 +6,7 @@
   overflow: hidden;
   margin: 0 auto;
   position: relative;
-  background-image: url(/assets/background2.jpg);
+  background-image: url(/assets/sf.png);
   background-size: cover;
   & .info-container {
     width: 100%;
@@ -38,7 +38,7 @@
       width: -webkit-calc(100% - 120px);
       float: left;
       height: 100%;
-      color: white;
+      color: lighten($charcoal, 15%);
       text-align: center;
       & h1 {
         padding-top: 10px;
@@ -57,16 +57,17 @@
     height: 40px;
     margin: 0 auto;
     & #find {
-      width: 80%;
+      width: 95%;
       height: 30px;
-      margin: 4px auto;
+      margin: 0 auto;
       position: relative;
       background: none;
       @include border-radius(2px);
       line-height: 30px;
-      color: $grey;
+      color: $charcoal;
       left: 0;
-      border: 1px solid $translucent;
+      background: $white;
+      font-size: 1.1em;
     }
   }
 }
@@ -107,8 +108,9 @@
     line-height: 30px;
     text-align: center;
     font-size: 1.4em;
-    font-weight: 400;
-    border-bottom: 1px solid lighten($grey, 15%)
+    font-weight: 300;
+    border-bottom: 1px solid lighten($grey, 15%);
+    position: relative;
   }
   & .venue .image {
     width: 80px;
@@ -117,7 +119,7 @@
     left: 30px;
     top: 10px;
     overflow: hidden;
-    @include border-radius(2px);
+    @include border-radius(3px);
     border: 2px solid white;
   }
   & .venue .image img {
@@ -161,14 +163,14 @@
       font-weight: 400;
       font-size: 1.2em;
     }
-    & .input:nth-child(even) {
+    & .input:nth-child(odd) {
       background: $grey;
       color: white;
       & select {
         color: white;
       }
     }
-    & .input:nth-child(odd) {
+    & .input:nth-child(even) {
       background: lighten($grey, 18%);
     }
   }

@@ -11,13 +11,13 @@ body, html {
   width: 100%;
   min-width: 320px;
   max-width: 768px;
-  background: $cover;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
   color: rgba(60,60,60,1);
   position: relative;
   font-size: 12px;
   overflow: scroll;
+  background: $cover;
 }
 
 // navbar
@@ -32,24 +32,27 @@ body, html {
     float: left;
     text-align: center;
     line-height: 50px;
-    color: darken($yellow, 20%);
+    color: darken($yellow, 10%);
     font-size: 2em;
     position: relative;
   }
   & a:link {
-    color: darken($yellow, 20%);
+    color: darken($yellow, 10%);
   }
   & a:visited {
-    color: darken($yellow, 20%);
+    color: darken($yellow, 10%);
+  }
+  & .entypo-plus {
+    font-size: 1.5em;
   }
   & .current {
     background: $cover;
-    color: $charcoal;
+    color: $grey;
     &:link {
-      color: $charcoal;
+      color: $grey;
     }
     &:visited {
-      color: $charcoal;
+      color: $grey;
     }
   }
 }
