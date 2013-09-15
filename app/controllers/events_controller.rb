@@ -35,16 +35,41 @@ class EventsController < ApplicationController
     render :json => @events
   end
 
-  def display
-
-    @created = Event.searchcreated(current_user.id)
-    @attending = Event.searchattending(current_user.id)
-
-  end
-
   def new
     @event = Event.new
     @city = city_checker
+  end
+
+  def create
+    @event = Event.new(params[:event])
+    @event.creator_id = current_user.id
+
+    if @event.save
+      @client = Twilio::REST::Client.new TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN
+      message = @client.account.sms.messages.create(:body => "One event added online by #{@event.creator.name}. Just to let you know.",
+          :to => "+14156466565",     # Replace with your phone number
+          :from => "+16503519558")   # Replace with your Twilio number
+      puts message.sid
+      render :show
+    else
+      flash[:error] = "You need to fill in all the details"
+      redirect_to 'events/new'
+    end
+
+  end
+
+  def show
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+  end
+
+  def destroy
+    event = Event.find(params[:id])
+    event.delete
+    redirect_to(events_path)
   end
 
   def search
@@ -67,38 +92,11 @@ class EventsController < ApplicationController
 
   end
 
-  def create
-    @event = Event.new(params[:event])
-    @event.creator_id = current_user.id
+  def display
 
-    if @event.save
-      @client = Twilio::REST::Client.new TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN
-      message = @client.account.sms.messages.create(:body => "One event added online by #{@event.creator.name}. Just to let you know.",
-          :to => "+14156466565",     # Replace with your phone number
-          :from => "+16503519558")   # Replace with your Twilio number
-      puts message.sid
-      render :show
-    else
-      flash[:error] = "You need to fill in all the details"
-      redirect_to 'events/new'
-    end
+    @created = Event.searchcreated(current_user.id)
+    @attending = Event.searchattending(current_user.id)
 
-  end
-
-  def show
-
-    @event = Event.find(params[:id])
-
-  end
-
-  def update
-
-  end
-
-  def destroy
-    event = Event.find(params[:id])
-    event.delete
-    redirect_to(events_path)
   end
 
 end

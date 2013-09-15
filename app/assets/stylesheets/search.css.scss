@@ -1,7 +1,7 @@
 @import "clickables";
 
 .event.search-bar {
-  width: 100%;
+  width: 95%;
   margin: 10px auto;
   text-align: center;
   overflow: hidden;
@@ -26,7 +26,14 @@
 }
 
 #map {
-  width: 100%;
+  width: 95%;
+  margin: 0 auto;
   height: 80px;
 }
 
+.event.result-container {
+  width: 95%;
+  margin: 0 auto;
+  background: lighten($grey, 10%);
+  height: 240px;
+}

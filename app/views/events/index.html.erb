@@ -7,16 +7,19 @@
 
   <div id="map"></div>
 
-  <div class="event results">
+  <div class="event result-container">
+    <div class="result"></div>
+    <button class="left"><</button>
+    <button class="right">></button>
   </div>
 
 </div>
 
 <div class="nav">
-  <a href="/events" class="current"><span class="entypo-search"></span></a>
-  <a href="/events/new"><span class="entypo-plus"></span><div class="divider"></div></a>
-  <a href="/users/edit"><span class="entypo-user"></span><div class="divider"></div></a>
-  <a href="http://www.ianyang.co"><span class="entypo-info"></a>
+  <div><a href="/events" class="current"><span class="entypo-search"></span></a></div>
+  <div><a href="/events/new"><span class="entypo-plus"></span></a></div>
+  <div><a href="/users/edit"><span class="entypo-user"></span></a></div>
+  <div><a href="http://www.ianyang.co"><span class="entypo-info"></a></div>
 </div>
 
-<%= javascript_include_tag 'event.js' %>
+<%= javascript_include_tag 'search.js' %>
