@@ -34,11 +34,24 @@ $(function() {
     yelp();
   });
 
+  $('.search-bar form').submit(function(){
+    event.preventDefault();
+
+    $('.results').empty();
+    $('.loading').css('display','block');
+
+    searchFind = $('#find').val();
+
+    navigator.geolocation.getCurrentPosition(function(position) {
+      searchPlace = position.coords.latitude + ',' + position.coords.longitude;
+      yelp();
+    });
+
+  });
 
   $('#find').focus(function(){
     $(this).val('');
-  })
-
+  });
 
   $('#find').change(function(event) {
     event.preventDefault();
