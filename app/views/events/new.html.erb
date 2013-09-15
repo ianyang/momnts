@@ -1,18 +1,7 @@
 <div class="container">
 
   <div class="create search-container">
-    <div class="info-container">
-      <div class="logo-container">
-        <div class="logo">
-          <%= image_tag 'logo.png' %>
-        </div>
-        <div class='divider'></div>
-      </div>
-      <div class="info">
-        <h1><%= Time.now.strftime("%A") %></h1>
-        <h3><%= @city %></h3>
-      </div>
-    </div>
+    <div id="map"></div>
     <div class="search-bar">
       <%= form_tag(controller: 'events', action: 'search', method: "") do %>
         <%= text_field_tag(:find , nil, placeholder: 'search for something near you e.g. cafe') %>

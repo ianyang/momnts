@@ -1,16 +1,31 @@
 <div class="container">
 
-  <div class="event search-bar">
-    <%= button_tag "Today", class:"active" %>
-    <%= button_tag "Tomorrow" %>
+  <div class="event search-container">
+
+    <div class="logo-container">
+      <div class="logo">
+        <%= image_tag 'logo.png' %>
+      </div>
+    </div>
+
+    <div class="info">
+      <h1><%= Time.now.strftime("%A") %></h1>
+      <h3><%= @city %></h3>
+    </div>
+
   </div>
 
-  <div id="map"></div>
-
-  <div class="event result-container">
+  <div class="today-container">
+    <div class="heading">Today</div>
     <div class="result"></div>
-    <button class="left"><</button>
-    <button class="right">></button>
+  </div>
+
+  <div class="tomorrow-container">
+    <div class="heading">Tomorrow</div>
+    <div class="result"></div>
+  </div>
+
+  <div class="acceptance-container">
   </div>
 
 </div>
@@ -23,3 +38,7 @@
 </div>
 
 <%= javascript_include_tag 'search.js' %>
+
+
+
+

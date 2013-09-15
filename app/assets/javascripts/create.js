@@ -1,6 +1,46 @@
 $(function() {
   "use strict";
 
+  $(function(initializeMap) {
+
+    var map = L.mapbox.map('map', 'ianyang.map-6tabzcd8').setView([37.7750,-122.4183],10);
+
+    map.addLayer(L.mapbox.tileLayer('ianyang.map-6tabzcd8', {
+      detectRetina: true,
+      retinaVersion: 'ianyang.map-6tabzcd8'
+    }));
+
+    map.locate({setView:true, maxZoom:14});
+    map.dragging.disable();
+
+    if (!navigator.geolocation) {
+      alert('geolocation is not available');
+    } else {
+      map.locate();
+    }
+
+    map.on('locationfound', function(e) {
+      map.fitBounds(e.bounds);
+
+      map.markerLayer.setGeoJSON({
+        type: "Feature",
+        geometry: {
+          type: "Point",
+          coordinates: [e.latlng.lng, e.latlng.lat]
+        },
+        properties: {
+          'marker-color': '#000',
+          'marker-symbol': 'star-stroked'
+        }
+      });
+    });
+
+    map.on('locationerror', function() {
+      alert('position could not be found');
+    });
+
+  });
+
   function yelp() {
     $.ajax({
       url: "/search",

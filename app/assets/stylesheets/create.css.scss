@@ -8,54 +8,16 @@
   position: relative;
   background-image: url(/assets/sanf.jpg);
   background-size: cover;
-  & .info-container {
+  & #map {
     width: 100%;
-    height: 80px;
-    margin: 0 auto;
-    & .logo-container {
-      width: 120px;
-      height: 80px;
-      float: left;
-      position: relative;
-      & .logo {
-        width: 60px;
-        height: 60px;
-        margin: 10px 30px 10px 30px;
-        overflow: hidden;
-        img {
-          width: 100%;
-          -webkit-animation: spin 12s linear infinite both;
-          -moz-animation: spin 12s linear infinite both;
-          -o-animation: spin 12s linear infinite both;
-          animation: spin 12s linear infinite both;
-        }
-      }
-      & .divider {
-        background: $translucent;
-      }
-    }
-    & .info {
-      width: -webkit-calc(100% - 120px);
-      float: left;
-      height: 100%;
-      color: lighten($charcoal, 15%);
-      text-align: center;
-      & h1 {
-        padding-top: 10px;
-        font-size: 2.2em;
-        margin: 0;
-      }
-      & h3 {
-        font-size: 1.4em;
-        margin: 0;
-        font-weight: 300;
-      }
-    }
+    height: 112%;
   }
   & .search-bar {
     width: 100%;
     height: 40px;
     margin: 0 auto;
+    position: absolute;
+    bottom: 0;
     & #find {
       width: 95%;
       height: 30px;

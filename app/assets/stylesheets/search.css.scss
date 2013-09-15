@@ -1,39 +1,70 @@
 @import "clickables";
 
-.event.search-bar {
-  width: 95%;
-  margin: 10px auto;
-  text-align: center;
+.event.search-container {
+  width: 100%;
+  height: 120px;
   overflow: hidden;
-  height: 35px;
-  background: $green;
-  @include border-radius(3px);
-  & button {
-    width: 50%;
+  margin: 0 auto;
+  position: relative;
+  background-image: url(/assets/sanf.jpg);
+  background-size: cover;
+  & .logo-container {
+    width: 120px;
+    height: 100%;
     float: left;
-    margin: 0;
-    @include no-appearance();
-    @include real-width();
-    border: none;
-    height: 35px;
-    color: darken($green, 10%);
-    font-size: 1.4em;
+    position: relative;
+    & .logo {
+      width: 60px;
+      height: 60px;
+      margin: 30px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        -webkit-animation: spin 12s linear infinite both;
+        -moz-animation: spin 12s linear infinite both;
+        -o-animation: spin 12s linear infinite both;
+        animation: spin 12s linear infinite both;
+      }
+    }
   }
-  & .active {
-    background: lighten($green, 10%);
+  & .info {
+    width: -webkit-calc(100% - 120px);
+    float: left;
+    height: 100%;
     color: white;
+    text-align: center;
+    & h1 {
+      padding-top: 30px;
+      font-size: 2.4em;
+      margin: 0;
+    }
+    & h3 {
+      font-size: 1.4em;
+      margin: 0;
+      font-weight: 300;
+    }
   }
 }
 
-#map {
-  width: 95%;
-  margin: 0 auto;
-  height: 80px;
+.today-container, .tomorrow-container {
+  margin: 10px auto;
+  width: 100%;
+  min-height: 240px;
+  overflow: hidden;
+  & .heading {
+    width: 30%;
+    height: 30px;
+    background: $blue;
+    text-align: center;
+    line-height: 30px;
+    border-bottom: 2px solid darken($blue, 10%);
+    color: white;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    box-shadow: 0 1px 1px $grey;
+  }
 }
 
-.event.result-container {
-  width: 95%;
-  margin: 0 auto;
-  background: lighten($grey, 10%);
-  height: 240px;
-}
+
+
+

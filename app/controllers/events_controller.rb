@@ -1,37 +1,44 @@
 class EventsController < ApplicationController
-  before_filter :authenticate_user!, except: [:index]
+  before_filter :authenticate_user!, except: [:index, :all_events]
   include EventsHelper
 
   def index
+    @city = city_checker
     delete_events
+    @events = Event.all
   end
 
   def all_events
 
-    @location = "location"
+    # @location = "location"
 
-    if params[:date] != nil
-      @year = params[:date]["(1i)"]
-      @month = params[:date]["(2i)"].to_i
-        if @month < 10
-          @month = '0'+@month.to_s
-        else
-          @month.to_s
-        end
-      @day = params[:date]["(3i)"].to_i
-        if @day < 10
-          @day = '0'+@day.to_s
-        else
-          @day.to_s
-        end
-      @setdate = "#{@year}-#{@month}-#{@day}"
-    else
-      @setdate = nil
-    end
+    # if params[:date] != nil
+    #   @year = params[:date]["(1i)"]
+    #   @month = params[:date]["(2i)"].to_i
+    #     if @month < 10
+    #       @month = '0'+@month.to_s
+    #     else
+    #       @month.to_s
+    #     end
+    #   @day = params[:date]["(3i)"].to_i
+    #     if @day < 10
+    #       @day = '0'+@day.to_s
+    #     else
+    #       @day.to_s
+    #     end
+    #   @setdate = "#{@year}-#{@month}-#{@day}"
+    # else
+    #   @setdate = nil
+    # end
 
-    @duration = "90"
+    # @duration = "90"
 
-    @events = Event.search(@duration, @setdate)
+    # @events = Event.search(@duration, @setdate)
+
+    @lat = params[:lat]
+    @lng = params[:lng]
+    # some location logic
+    @events = Event.all
     render :json => @events
   end
 
