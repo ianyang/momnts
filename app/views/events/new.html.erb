@@ -15,10 +15,9 @@
     </div>
     <div class="search-bar">
       <%= form_tag(controller: 'events', action: 'search', method: "") do %>
-        <%= text_field_tag(:find , nil, placeholder: 'something near you e.g. coffee') %>
+        <%= text_field_tag(:find , nil, placeholder: 'search for something near you e.g. cafe') %>
         <div class='hidden'><%= submit_tag 'Find' %></div>
       <% end %>
-      <span class="entypo-search"></span>
     </div>
   </div>
 

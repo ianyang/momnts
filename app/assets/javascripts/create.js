@@ -34,11 +34,13 @@ $(function() {
     yelp();
   });
 
-  $('.search-bar form').on("submit", function(event) {
-    event.preventDefault();
-  });
 
-  $('.search-bar .entypo-search').click(function(event) {
+  $('#find').focus(function(){
+    $(this).val('');
+  })
+
+
+  $('#find').change(function(event) {
     event.preventDefault();
 
     $('.results').empty();
