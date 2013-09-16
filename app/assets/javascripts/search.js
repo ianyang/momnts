@@ -17,15 +17,15 @@ $(document).ready(function(){
       success: function(data) {
         var today = data[0];
         var tomorrow = data[1];
-
-        if (today.length > 0) {
+        if (today !== null && today.length > 0) {
           $('.today-container .event').remove();
           $.each(today, function(x) {
             $('.today-container').append("<div class='event'>"
               + "<div class='time-container'>"
                 + "<div class='time'>" + moment(today[x]["time"]).format("hh:mm") + "</div>"
               + "</div><div class='location-container'>"
-                + "<div class='location'><img src='" + today[x]["image"] + "' ></div>"
+                + "<div class='location'><img src='" + today[x]["image"] + "' >"
+                + "<div class='distance'>" + today[x]["distance"] + "mi</div></div>"
                 + "<p>" + today[x]["location"] + "</p>"
               + "</div><div class='duration-container'>"
                 + "<div class='duration'>" + today[x]["duration"] + "m</div>"
@@ -35,7 +35,7 @@ $(document).ready(function(){
           });
         }
 
-        if (tomorrow.length > 0) {
+        if (tomorrow !== null && today.length > 0) {
           $('.tomorrow-container .event').remove();
           $.each(tomorrow, function(x) {
             $('.tomorrow-container').append("<div class='event'>"
@@ -60,15 +60,15 @@ $(document).ready(function(){
   }
 
   if (!navigator.geolocation) {
+    lat = '37.7750';
+    lng = '-122.4183';
+    events();
+  } else {
     navigator.geolocation.getCurrentPosition(function(position) {
       lat = position.coords.latitude;
       lng = position.coords.longitude;
       events();
     });
-  } else {
-    lat = '37.7750';
-    lng = '-122.4183';
-    events();
   }
 
   $('body').delegate('.event','click', function(){

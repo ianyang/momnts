@@ -12,22 +12,61 @@ class EventsController < ApplicationController
 
     sleep 1
 
-    @lat = params[:lat]
-    @lng = params[:lng]
+    lat = params[:lat].to_f
+    lng = params[:lng].to_f
     # some location logic
     @events = []
+    @today = []
+    @tommorw = []
 
     if user_signed_in?
       today = Event.where(date: Date.today).where(acceptor_id: nil).where(Event.arel_table[:creator_id].not_eq(current_user.id))
       tomorrow = Event.where(date: Date.today+1).where(acceptor_id: nil).where(Event.arel_table[:creator_id].not_eq(current_user.id))
-
     else
       today = Event.where(date: Date.today).where(acceptor_id: nil)
       tomorrow = Event.where(date: Date.today+1).where(acceptor_id: nil)
     end
 
-    @events << today
-    @events << tomorrow
+    if today.length > 0
+      today.each do |event|
+        d = haversine(event.latitude, event.longitude, lat, lng)
+        if d < 5
+          @today << {
+            id: event.id,
+            date: event.date,
+            time: event.time,
+            duration: event.duration,
+            topic: event.topic,
+            location: event.location,
+            image: event.image,
+            address: event.address,
+            distance: d
+          }
+        end
+      end
+    end
+
+    if tomorrow.length > 0
+      tomorrow.each do |event|
+        d = haversine(event.latitude, event.longitude, lat, lng)
+        if d < 5
+          @tomorrow << {
+            id: event.id,
+            date: event.date,
+            time: event.time,
+            duration: event.duration,
+            topic: event.topic,
+            location: event.location,
+            image: event.image,
+            address: event.address,
+            distance: d
+          }
+        end
+      end
+    end
+
+    @events << @today
+    @events << @tomorrow
     render :json => @events
   end
 
