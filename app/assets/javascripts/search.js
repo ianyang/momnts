@@ -4,6 +4,10 @@ $(document).ready(function(){
   var lat;
   var lng;
 
+  var time = $('.time').text();
+  var clientDay = moment(time).format("dddd");
+  $('.time').html(clientDay).fadeIn();
+
   function events() {
     $.ajax({
       url: "/all_events",

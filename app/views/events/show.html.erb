@@ -7,7 +7,7 @@
     <div>Location: <%= @event.location %></div>
     <div>Address: <%= @event.address %></div>
     <div>Date: <%= @event.date %></div>
-    <div>Time: <%= @event.time.in_time_zone("Pacific Time (US & Canada)").strftime("%I:%M %P") %></div>
+    <div>Time: <%= @event.time.strftime("%I:%M %P") %></div>
     <div>Duration: <%= @event.duration %>mins</div>
     <div>Topic: <%= @event.topic %></div>
     <div><% if @event.acceptor_id == nil %>
@@ -30,4 +30,3 @@
   <div><a href="/users/edit"><span class="entypo-user"></span></a></div>
   <div><a href="http://www.ianyang.co"><span class="entypo-info"></a></div>
 </div>
-
