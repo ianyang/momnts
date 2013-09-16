@@ -17,7 +17,8 @@ $(document).ready(function(){
       success: function(data) {
         var today = data[0];
         var tomorrow = data[1];
-        if (today !== null && today.length > 0) {
+
+        if (today.length > 0) {
           $('.today-container .event').remove();
           $.each(today, function(x) {
             $('.today-container').append("<div class='event'>"
@@ -37,7 +38,7 @@ $(document).ready(function(){
           });
         }
 
-        if (tomorrow !== null && today.length > 0) {
+        if (tomorrow.length > 0) {
           $('.tomorrow-container .event').remove();
           $.each(tomorrow, function(x) {
             $('.tomorrow-container').append("<div class='event'>"
@@ -53,6 +54,10 @@ $(document).ready(function(){
               + "</div><p class='id hidden'>" + tomorrow[x]["id"] + "</p></div>");
           });
         }
+
+        if (today.length===0 && tomorrow.length===0) {
+          alert('Sorry. There are no events near you');
+        };
 
         $('.loading').css('display','none');
         $('.today-container').fadeIn();

@@ -17,7 +17,7 @@ class EventsController < ApplicationController
     # some location logic
     @events = []
     @today = []
-    @tommorw = []
+    @tomorrow = []
 
     if user_signed_in?
       today = Event.where(date: Date.today).where(acceptor_id: nil).where(Event.arel_table[:creator_id].not_eq(current_user.id))
@@ -29,40 +29,51 @@ class EventsController < ApplicationController
 
     if today.length > 0
       today.each do |event|
-        d = haversine(event.latitude, event.longitude, lat, lng)
-        if d < 5
-          @today << {
-            id: event.id,
-            date: event.date,
-            time: event.time,
-            duration: event.duration,
-            topic: event.topic,
-            location: event.location,
-            image: event.image,
-            address: event.address,
-            distance: d
-          }
+        unless event.latitude==nil || event.longitude==nil
+          d = haversine(event.latitude, event.longitude, lat, lng)
+          if d < 5
+            @today << {
+              id: event.id,
+              date: event.date,
+              time: event.time,
+              duration: event.duration,
+              topic: event.topic,
+              location: event.location,
+              image: event.image,
+              address: event.address,
+              distance: d
+            }
+          end
         end
+      end
+
+      @today.sort! do |x, y|
+        x[:distance] <=> y[:distance]
       end
     end
 
-
     if tomorrow.length > 0
       tomorrow.each do |event|
-        d = haversine(event.latitude, event.longitude, lat, lng)
-        if d < 5
-          @tomorrow << {
-            id: event.id,
-            date: event.date,
-            time: event.time,
-            duration: event.duration,
-            topic: event.topic,
-            location: event.location,
-            image: event.image,
-            address: event.address,
-            distance: d
-          }
+        unless event.latitude==nil || event.longitude==nil
+          d = haversine(event.latitude, event.longitude, lat, lng)
+          if d < 5
+            @tomorrow << {
+              id: event.id,
+              date: event.date,
+              time: event.time,
+              duration: event.duration,
+              topic: event.topic,
+              location: event.location,
+              image: event.image,
+              address: event.address,
+              distance: d
+            }
+          end
         end
+      end
+
+      @tomorrow.sort! do |x, y|
+        x[:distance] <=> y[:distance]
       end
     end
 
