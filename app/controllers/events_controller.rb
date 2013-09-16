@@ -11,35 +11,21 @@ class EventsController < ApplicationController
   def all_events
 
     sleep 1
-    # @location = "location"
-
-    # if params[:date] != nil
-    #   @year = params[:date]["(1i)"]
-    #   @month = params[:date]["(2i)"].to_i
-    #     if @month < 10
-    #       @month = '0'+@month.to_s
-    #     else
-    #       @month.to_s
-    #     end
-    #   @day = params[:date]["(3i)"].to_i
-    #     if @day < 10
-    #       @day = '0'+@day.to_s
-    #     else
-    #       @day.to_s
-    #     end
-    #   @setdate = "#{@year}-#{@month}-#{@day}"
-    # else
-    #   @setdate = nil
-    # end
-
-    # @duration = "90"
-
-    # @events = Event.search(@duration, @setdate)
 
     @lat = params[:lat]
     @lng = params[:lng]
     # some location logic
-    @events = Event.all
+    @events = []
+
+    if user_signed_in?
+      @events << Event.where(date: Date.today).where(acceptor_id: nil).where(Event.arel_table[:creator_id].not_eq(current_user.id))
+      @events << Event.where(date: Date.today+1).where(acceptor_id: nil).where(Event.arel_table[:creator_id].not_eq(current_user.id))
+
+    else
+      @events << Event.where(date: Date.today).where(acceptor_id: nil)
+      @events << Event.where(date: Date.today+1).where(acceptor_id: nil)
+    end
+
     render :json => @events
   end
 
@@ -72,6 +58,19 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
+  end
+
+  def accept
+    @event = Event.find(params[:id])
+    @event.acceptor_id = params[:acceptor_id]
+    @event.acceptor_identifier = params[:acceptor_identifier]
+
+    if @event.save
+      redirect_to "/events/#{@event.id}"
+    else
+      redirect_to "/"
+    end
+
   end
 
   def destroy
@@ -108,16 +107,3 @@ class EventsController < ApplicationController
   end
 
 end
-
-
-  # def edit
-  #   @event = Event.find(params[:id])
-  # end
-
-  # def update
-  #   @event = Event.find(params[:id])
-  #   @event.update_attributes(params[:event])
-  #   render :show
-  # end
-
-

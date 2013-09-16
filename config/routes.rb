@@ -12,5 +12,6 @@ Project::Application.routes.draw do
   get '/createnew' => 'events#new'
   get '/display' => 'events#display'
   get '/all_events' => 'events#all_events'
+  post '/accept' => 'events#accept'
 
 end

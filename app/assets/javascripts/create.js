@@ -112,7 +112,8 @@ $(function() {
 
   });
 
-  function choose() {
+  $('body').delegate('.venue','click', function(){
+
     var $this = $(this);
     $('.results').hide();
     $('.results').empty();
@@ -125,8 +126,7 @@ $(function() {
     $('#event_image').val($('.image img')[0].src);
 
     $('.confirm').fadeIn();
-  }
+  });
 
-  $('body').on('click', '.venue', choose);
 
 });

@@ -1,23 +1,15 @@
-<div class="event container">
+<div class="events container">
 
-  <div class="event search-container">
-
+  <div class="search-container">
     <div class="logo-container">
       <div class="logo">
         <%= image_tag 'logo.png' %>
       </div>
     </div>
-
     <div class="info">
       <h1><%= Time.now.strftime("%A") %></h1>
       <h3><%= @city %></h3>
     </div>
-
-    <div class="hidden">
-      <p class="lat"></p>
-      <p class="lng"></p>
-    </div>
-
   </div>
 
   <div class="header">EVENTS CLOSEST TO YOU...</div>
@@ -26,16 +18,35 @@
     <%= image_tag("loading.gif") %>
   </div>
 
-  <div class="today-container">
-    <div class="heading">T O D A Y</div>
+  <div class="results">
+    <div class="today-container">
+      <div class="heading">T O D A Y</div>
+    </div>
+
+    <div class="tomorrow-container">
+      <div class="heading">T O M O R R O W</div>
+    </div>
   </div>
 
-  <div class="tomorrow-container">
-    <div class="heading">T O M O R R O W</div>
-  </div>
-
+  <% if user_signed_in? %>
   <div class="acceptance-container">
+    <div class="form">
+      <div class='heading'>Accept Event</div>
+      <%= form_tag({controller: "events", action: "accept"}, method: :post) do %>
+        <%= hidden_field_tag :id %>
+        <%= hidden_field_tag :acceptor_id, current_user.id %>
+      <div class='input'>
+        <%= text_field_tag :acceptor_identifier, nil, :placeholder => 'what you look like' %>
+      </div>
+    </div>
+    <%= submit_tag "Accept", class: 'btn btn-primary' %>
+    <% end %>
   </div>
+
+    <% else %>
+    <%= link_to 'Sign In to Accept', '/users/sign_in', class: 'btn btn-primary' %>
+
+    <% end %>
 
   <div class="bottom"></div>
 
@@ -49,7 +60,3 @@
 </div>
 
 <%= javascript_include_tag 'search.js' %>
-
-
-
-
