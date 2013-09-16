@@ -6,8 +6,8 @@
     <div>Created by: <%= @event.creator.name %></div>
     <div>Location: <%= @event.location %></div>
     <div>Address: <%= @event.address %></div>
-    <div>Date: <%= @event.date.localtime %></div>
-    <div>Time: <%= @event.time.localtime.strftime("%I:%M %P") %></div>
+    <div>Date: <%= @event.date %></div>
+    <div>Time: <%= @event.time.in_time_zone("Pacific Time (US & Canada)").strftime("%I:%M %P") %></div>
     <div>Duration: <%= @event.duration %>mins</div>
     <div>Topic: <%= @event.topic %></div>
     <div><% if @event.acceptor_id == nil %>
