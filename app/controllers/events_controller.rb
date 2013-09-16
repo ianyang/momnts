@@ -46,6 +46,7 @@ class EventsController < ApplicationController
       end
     end
 
+
     if tomorrow.length > 0
       tomorrow.each do |event|
         d = haversine(event.latitude, event.longitude, lat, lng)

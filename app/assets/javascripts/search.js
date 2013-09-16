@@ -21,16 +21,18 @@ $(document).ready(function(){
           $('.today-container .event').remove();
           $.each(today, function(x) {
             $('.today-container').append("<div class='event'>"
-              + "<div class='time-container'>"
+              + "<div class='heading'>"
+                + "<div class='name'>" + today[x]["location"] + "</div>"
+                + "<div class='address'>" + today[x]["address"].substring(0, today[x]["address"].indexOf(",")) + "</div>"
+              + "</div><div class='time-container'>"
                 + "<div class='time'>" + moment(today[x]["time"]).format("hh:mm") + "</div>"
               + "</div><div class='location-container'>"
                 + "<div class='location'><img src='" + today[x]["image"] + "' >"
                 + "<div class='distance'>" + today[x]["distance"] + "mi</div></div>"
-                + "<p>" + today[x]["location"] + "</p>"
               + "</div><div class='duration-container'>"
                 + "<div class='duration'>" + today[x]["duration"] + "m</div>"
               + "</div><div class='topic-container'>"
-                + "We can talk about " + today[x]["topic"].toLowerCase()
+                + "We can talk about " + today[x]["topic"].toLowerCase().replace('<script>', "")
               + "</div><p class='id hidden'>" + today[x]["id"] + "</p></div>");
           });
         }
@@ -47,7 +49,7 @@ $(document).ready(function(){
               + "</div><div class='duration-container'>"
                 + "<div class='duration'>" + tomorrow[x]["duration"] + "m</div>"
               + "</div><div class='topic-container'>"
-                + "We can talk about " + tomorrow[x]["topic"].toLowerCase()
+                + "We can talk about " + tomorrow[x]["topic"].toLowerCase().replace('<script>', "")
               + "</div><p class='id hidden'>" + tomorrow[x]["id"] + "</p></div>");
           });
         }
