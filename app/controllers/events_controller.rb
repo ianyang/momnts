@@ -18,14 +18,16 @@ class EventsController < ApplicationController
     @events = []
 
     if user_signed_in?
-      @events << Event.where(date: Date.today).where(acceptor_id: nil).where(Event.arel_table[:creator_id].not_eq(current_user.id))
-      @events << Event.where(date: Date.today+1).where(acceptor_id: nil).where(Event.arel_table[:creator_id].not_eq(current_user.id))
+      today = Event.where(date: Date.today).where(acceptor_id: nil).where(Event.arel_table[:creator_id].not_eq(current_user.id))
+      tomorrow = Event.where(date: Date.today+1).where(acceptor_id: nil).where(Event.arel_table[:creator_id].not_eq(current_user.id))
 
     else
-      @events << Event.where(date: Date.today).where(acceptor_id: nil)
-      @events << Event.where(date: Date.today+1).where(acceptor_id: nil)
+      today = Event.where(date: Date.today).where(acceptor_id: nil)
+      tomorrow = Event.where(date: Date.today+1).where(acceptor_id: nil)
     end
 
+    @events << today
+    @events << tomorrow
     render :json => @events
   end
 

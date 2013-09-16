@@ -149,14 +149,15 @@ $cover: rgba(245,245,245,1);
   margin: 0 auto;
   font-size: 1.1em;
   line-height: 39px;
-  text-align: center;
+  // text-align: center;
 }
 
 .input-major {
-  width: 70%;
+  width: 65%;
   float: left;
   height: 100%;
-  text-align: center;
+  padding-left: 5%;
+  // text-align: center;
 }
 
 .input-minor {
@@ -165,6 +166,7 @@ $cover: rgba(245,245,245,1);
   float: left;
   height: 100%;
   font-size: 1.2em;
+  text-align: center;
 }
 
 .form .input-last {
@@ -186,7 +188,7 @@ input[type=text], input[type=email], input[type=password], input[type=number]{
   font-size: 1.1em;
   @include real-width();
   margin: 0;
-  text-align: center;
+  // text-align: center;
 }
 
 input::-webkit-outer-spin-button,
@@ -203,7 +205,7 @@ select {
   @include no-appearance();
   font-weight: 300;
   font-size: 1.1em;
-  text-align: center;
+  // text-align: center;
   @include real-width();
   display: inline;
   line-height: 35px;

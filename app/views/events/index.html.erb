@@ -21,10 +21,16 @@
   <div class="results">
     <div class="today-container">
       <div class="heading">T O D A Y</div>
+      <div class="event">
+        <h1>Sorry there are no events near you tomorrow</h1>
+      </div>
     </div>
 
     <div class="tomorrow-container">
       <div class="heading">T O M O R R O W</div>
+      <div class="event">
+        <h1>Sorry there are no events near you tomorrow</h1>
+      </div>
     </div>
   </div>
 
@@ -36,7 +42,7 @@
         <%= hidden_field_tag :id %>
         <%= hidden_field_tag :acceptor_id, current_user.id %>
       <div class='input'>
-        <%= text_field_tag :acceptor_identifier, nil, :placeholder => 'what you look like' %>
+        <%= text_field_tag :acceptor_identifier, nil, :placeholder => 'Describe what you look like' %>
       </div>
     </div>
     <%= submit_tag "Accept", class: 'btn btn-primary' %>
