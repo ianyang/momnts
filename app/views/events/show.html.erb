@@ -1,22 +1,26 @@
-<div class="container">
+<div class="confirm container">
 
-    <h2>Your Confirmation</h2>
-    <div class="confirm_img"><img src="<%= @event.image %>" /></div><br>
-    <div>Created by: <%= @event.creator.name %></div><br>
-    <div>Location: <%= @event.location %></div><br>
-    <div>Address: <%= @event.address %></div><br>
-    <div>Date: <%= @event.date %></div><br>
-    <div>Time: <%= @event.time.strftime("%I:%M %P") %></div><br>
-    <div>Duration: <%= @event.duration %>mins</div><br>
-    <div>Topic: <%= @event.topic %></div><br>
-    <span class="acceptance"><% if @event.acceptor_id == nil %>
-        <%= "Your event is waiting to be accepted" %>
+  <div class="confirm">
+    <div class="heading">Your Confirmation</div>
+    <div><span class="confirm_img"><img src="<%= @event.image %>" /></span></div>
+    <div>Created by: <%= @event.creator.name %></div>
+    <div>Location: <%= @event.location %></div>
+    <div>Address: <%= @event.address %></div>
+    <div>Date: <%= @event.date %></div>
+    <div>Time: <%= @event.time.strftime("%I:%M %P") %></div>
+    <div>Duration: <%= @event.duration %>mins</div>
+    <div>Topic: <%= @event.topic %></div>
+    <div><% if @event.acceptor_id == nil %>
+        <span class="waiting"><%= "Your event is waiting to be accepted" %></span>
         <% else %>
-        <%= "Accepted by " + @event.acceptor.name %>
+        <span class="accepted"><%= "Accepted by " + @event.acceptor.name %></span>
         <% end %>
-    </span>
+    </div>
+  </div>
 
-    <%= button_to "Delete Event", @event, :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-warning' %>
+  <%= button_to "Delete Event", @event, :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-warning' %>
+
+  <div class="bottom"></div>
 
 </div>
 

@@ -1,0 +1,49 @@
+@import "clickables";
+
+.confirm.container .confirm {
+  width: 95%;
+  margin: 10px auto;
+  background: $white;
+  box-shadow: 0 0 3px $grey;
+  text-align: center;
+  & .heading {
+    width: 100%;
+    height: 35px;
+    background: $yellow;
+    font-size: 1.4em;
+    text-align: center;
+    color: $white;
+    font-weight: 400;
+    line-height: 35px;
+  }
+  & div {
+    width: 100%;
+    border-bottom: 1px solid $grey;
+    padding: 5px 0 5px 0;
+  }
+  & .confirm_img {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    display: block;
+    @include border-radius(50%);
+    overflow: hidden;
+    & img {
+      width: 100%;
+    }
+  }
+  & .waiting, .accepted {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: $white;
+    padding: 5px 0 5px 0;
+  }
+  & .waiting {
+    background: $orange;
+  }
+  & .accepted {
+    background: $green;
+  }
+}
+
