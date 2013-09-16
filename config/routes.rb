@@ -4,6 +4,8 @@ Project::Application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
+  devise_for :users, :controllers => {:sessions => 'sessions'}
+
   root :to => "events#index"
 
   resources :events
