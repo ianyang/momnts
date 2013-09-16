@@ -5,7 +5,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :gender
       t.date :dob
       t.string :profession
-      t.integer :number
+      t.string :number
+      t.string :image
       t.timestamps
     end
   end
