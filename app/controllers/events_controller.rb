@@ -10,6 +10,7 @@ class EventsController < ApplicationController
 
   def all_events
 
+    sleep 1
     # @location = "location"
 
     # if params[:date] != nil

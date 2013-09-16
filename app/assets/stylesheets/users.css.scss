@@ -62,13 +62,24 @@
 // users form
 
 .user.container {
-  background-image: url(/assets/background1.jpg);
-  background-size: cover;
+  // background-image: url(/assets/background1.jpg);
+  // background-size: cover;
   position: relative;
+}
+
+.user.container .header {
+  width: 95%;
+  margin: 5px auto;
+  height: 35px;
+  font-size: 1.4em;
+  font-weight: 300;
+  line-height: 35px;
+  text-shadow: 0 0 1px $grey;
 }
 
 .user.container .form {
   width: 95%;
+  margin: 10px auto;
   &.password {
     & .input {
       display: none;

@@ -12,7 +12,17 @@ $(document).ready(function(){
       data: {"lat": lat, "lng": lng},
       success: function(data) {
         $.each(data, function(x) {
-          $('.today-container .result').append(data[x]);
+          $('.today-container').append("<div class='event'>"
+            + "<div class='time-container'>"
+              + "<div class='time'>" + moment(data[x]["time"]).format("hh:mm") + "</div>"
+            + "</div><div class='location-container'>"
+              + "<div class='location'><img src='" + data[x]["image"] + "' ></div>"
+              + "<p>" + data[x]["location"] + "</p>"
+            + "</div><div class='duration-container'>"
+              + "<div class='duration'>" + data[x]["duration"] + "m</div>"
+            + "</div><div class='topic-container'>"
+              + "We can talk about " + data[x]["topic"].toLowerCase()
+            + "</div></div>");
           console.log(data[x]);
         });
         $('.loading').css('display','none');
