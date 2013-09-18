@@ -42,11 +42,14 @@ $(document).ready(function(){
           $('.tomorrow-container .event').remove();
           $.each(tomorrow, function(x) {
             $('.tomorrow-container').append("<div class='event'>"
-              + "<div class='time-container'>"
+              + "<div class='heading'>"
+                + "<div class='name'>" + tomorrow[x]["location"] + "</div>"
+                + "<div class='address'>" + tomorrow[x]["address"].substring(0, tomorrow[x]["address"].indexOf(",")) + "</div>"
+              + "</div><div class='time-container'>"
                 + "<div class='time'>" + moment(tomorrow[x]["time"]).format("hh:mm") + "</div>"
               + "</div><div class='location-container'>"
-                + "<div class='location'><img src='" + tomorrow[x]["image"] + "' ></div>"
-                + "<p>" + tomorrow[x]["location"] + "</p>"
+                + "<div class='location'><img src='" + tomorrow[x]["image"] + "' >"
+                + "<div class='distance'>" + tomorrow[x]["distance"] + "mi</div></div>"
               + "</div><div class='duration-container'>"
                 + "<div class='duration'>" + tomorrow[x]["duration"] + "m</div>"
               + "</div><div class='topic-container'>"
